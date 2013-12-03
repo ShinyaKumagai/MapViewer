@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>OpenTK_GLControl</id>
+    <version>1.0.0</version>
+    <title>OpenTK 1.0 + GLControl</title>
+    <authors>OpenTK team</authors>
+    <owners>OpenTK team</owners>
+    <licenseUrl>http://www.opentk.com/project/license</licenseUrl>
+    <projectUrl>http://www.opentk.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>OpenTK is open source game development toolkit for .Net/Mono. GLControl provides integration with System.Windows.Forms.</description>
+    <summary>Free to use, modify and redistribute the source code</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>c# opengl</tags>
+  </metadata>
+</package>
