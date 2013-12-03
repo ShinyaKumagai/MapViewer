@@ -56,6 +56,12 @@
     <Reference Include="Microsoft.WindowsAPICodePack.DirectX">
       <HintPath>..\Assembly\Microsoft.WindowsAPICodePack.DirectX.dll</HintPath>
     </Reference>
+    <Reference Include="OpenTK">
+      <HintPath>..\packages\OpenTK_GLControl.1.0.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl">
+      <HintPath>..\packages\OpenTK_GLControl.1.0.0\lib\net20\OpenTK.GLControl.dll</HintPath>
+    </Reference>
     <Reference Include="SharpKml">
       <HintPath>..\Assembly\SharpKml.dll</HintPath>
     </Reference>
@@ -108,6 +114,7 @@
     <EmbeddedResource Include="View\MapControl.resx">
       <DependentUpon>MapControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
