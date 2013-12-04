@@ -73,12 +73,11 @@ namespace MapViewer.Converter
             // 左下を原点とした座標に変換する。
             foreach (var polygon in Polygons)
             {
-                var points = from p in polygon
-                             select new PointF()
-                                     {
-                                         X = -(min.X - p.X) * ratio,
-                                         Y = (max.Y - p.Y) * ratio
-                                     };
+                var points = polygon.Select(p => new PointF()
+                                                     {
+                                                         X = -(min.X - p.X) * ratio,
+                                                         Y =  (max.Y - p.Y) * ratio
+                                                     });
                 polygon.Points = points.ToList();
             }
 

@@ -37,6 +37,11 @@ namespace MapViewer.Loader
 
         #region Private methods
 
+        /// <summary>
+        /// KMLファイルからポリゴンを抽出する
+        /// </summary>
+        /// <param name="kml">KMLファイル</param>
+        /// <returns>読み込んだポリゴン</returns>
         private IList<Geometory.Polygon> ToPolygons(Kml kml)
         {
             var polygons = new List<Geometory.Polygon>();

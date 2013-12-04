@@ -16,7 +16,7 @@ namespace MapViewer.Loader
         #region Public methods
 
         /// <summary>
-        /// 地図データから座標データを読み込む
+        /// 地図データからポリゴンを読み込む
         /// </summary>
         /// <param name="path">ファイルパス</param>
         /// <returns>座標データ</returns>

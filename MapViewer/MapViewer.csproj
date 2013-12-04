@@ -75,17 +75,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converter\IConverter.cs" />
-    <Compile Include="Converter\PolygonConverter.cs" />
-    <Compile Include="Loader\KmlLoader.cs" />
+    <Compile Include="Provider\Converter\IConverter.cs" />
+    <Compile Include="Provider\Converter\PolygonConverter.cs" />
+    <Compile Include="Provider\KmlProvider.cs" />
+    <Compile Include="Provider\Loader\KmlLoader.cs" />
     <Compile Include="MapViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MapViewForm.Designer.cs">
       <DependentUpon>MapViewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Loader\ILoader.cs" />
+    <Compile Include="Provider\Loader\ILoader.cs" />
     <Compile Include="Geometory\Polygon.cs" />
+    <Compile Include="Provider\PolygonProvider.cs" />
     <Compile Include="Renderer\OpenGLRenderer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,10 +1,12 @@
 ﻿using MapViewer.Converter;
 using MapViewer.Loader;
+using MapViewer.Provider;
 using MapViewer.Renderer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -58,37 +60,62 @@ namespace MapViewer
                 return;
             }
 
-            IList<Geometory.Polygon> polygons = null;
+            try
+            {
 
-            Cursor = Cursors.WaitCursor;
-            
-            Task.Factory.StartNew(() =>
-                {
-                    // ファイルからポリゴンを作成する
-                    return new KmlLoader().Load(openFileDialog.FileName);
-                })
-            .ContinueWith((t) =>
-                {
-                    // 読み込んだ地図を座標変換する
-                    var converter = new PolygonConverter()
+                Cursor = Cursors.WaitCursor;
+
+                Task.Factory.StartNew(() =>
                     {
-                        Polygons = t.Result,
-                        DisplaySize = Math.Min(ClientSize.Width, ClientSize.Height),
-                    };
-                    return polygons = converter.Convert();
-                })
-            .ContinueWith((t) =>
-                {
-                    _drawPolygons = t.Result;
-                    Console.WriteLine("Finished {0} polygons", polygons.Count);
-                    // 異なる地図を描画する場合は以前の描画をクリアしておく
-                    CreateGraphics().Clear(BackColor);
-                    Invalidate();
-                    // 終了時にカーソルを戻す
-                    Cursor = Cursors.Default;
-                }, 
-                TaskScheduler.FromCurrentSynchronizationContext()
-            );
+                        var provider = new KmlProvider()
+                        {
+                            DisplaySize = ClientSize,
+                        };
+                        _drawPolygons = provider.Provide(openFileDialog.FileName);
+                    })
+                .ContinueWith((t) =>
+                    {
+                        RequestRepaint();
+                        // 終了時にカーソルを戻す
+                        Cursor = Cursors.Default;
+                    },
+                TaskScheduler.FromCurrentSynchronizationContext());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            //IList<Geometory.Polygon> polygons = null;
+
+            //Cursor = Cursors.WaitCursor;
+            //Task.Factory.StartNew(() =>
+            //    {
+            //        // ファイルからポリゴンを作成する
+            //        return new KmlLoader().Load(openFileDialog.FileName);
+            //    })
+            //.ContinueWith((t) =>
+            //    {
+            //        // 読み込んだ地図を座標変換する
+            //        var converter = new PolygonConverter()
+            //        {
+            //            Polygons = t.Result,
+            //            DisplaySize = Math.Min(ClientSize.Width, ClientSize.Height),
+            //        };
+            //        return polygons = converter.Convert();
+            //    })
+            //.ContinueWith((t) =>
+            //    {
+            //        _drawPolygons = t.Result;
+            //        Console.WriteLine("Finished {0} polygons", polygons.Count);
+            //        // 異なる地図を描画する場合は以前の描画をクリアしておく
+            //        CreateGraphics().Clear(BackColor);
+            //        Invalidate();
+            //        // 終了時にカーソルを戻す
+            //        Cursor = Cursors.Default;
+            //    }, 
+            //    TaskScheduler.FromCurrentSynchronizationContext()
+            //);
         }
 
         /// <summary>
@@ -120,5 +147,16 @@ namespace MapViewer
             }
             base.OnPaint(e);
         }
+
+        #region Private methods
+
+        private void RequestRepaint()
+        {
+            // 異なる地図を描画する場合は以前の描画をクリアしておく
+            CreateGraphics().Clear(BackColor);
+            Invalidate();
+        }
+
+        #endregion
     }
 }
