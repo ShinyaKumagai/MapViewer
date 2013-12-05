@@ -17,7 +17,7 @@ namespace MapViewer.Provider
         /// プロバイダからポリゴンを作成する
         /// </summary>
         /// <param name="provider">ポリゴンのプロバイダ</param>
-        void Open(PolygonProvider provider);
+        void Open(IProvider provider);
 
         #endregion
     }

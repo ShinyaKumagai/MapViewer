@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace MapViewer.Loader
 {
     /// <summary>
-    /// 地図データを読み込むためのインターフェース
+    /// ファイルからポリゴンを読み込むためのインターフェース
     /// </summary>
     public interface ILoader
     {

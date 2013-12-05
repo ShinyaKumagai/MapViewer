@@ -11,6 +11,26 @@ namespace MapViewer.Provider
     /// </summary>
     public class KmlProvider : PolygonProvider
     {
+        #region Constructor
+
+        /// <summary>
+        /// 新しいインスタンスを作成する
+        /// </summary>
+        public KmlProvider()
+        {
+        }
+
+        /// <summary>
+        /// 新しいインスタンスを作成する
+        /// </summary>
+        /// <param name="filepath">ファイルパス</param>
+        public KmlProvider(string filepath) :
+            base(filepath)
+        {
+        }
+
+        #endregion
+
         #region PolygonProvider
 
         protected override ILoader CreateLoader()
