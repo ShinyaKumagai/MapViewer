@@ -20,6 +20,15 @@ namespace MapViewer.Provider
         #region Public properties
 
         /// <summary>
+        /// 地図データのパス
+        /// </summary>
+        public string Filepath
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// 表示領域のサイズ
         /// </summary>
         /// <remarks>
@@ -41,6 +50,7 @@ namespace MapViewer.Provider
         public PolygonProvider()
         {
             DisplaySize = new Size(1000, 1000);
+            Filepath = String.Empty;
 
             // イベントにヌルオブジェクトをセットしておく
             ProvideBegin += (_s, _e) => { };
@@ -78,9 +88,8 @@ namespace MapViewer.Provider
         /// <summary>
         /// 読み込んだファイルから>スクリーン座標のポリゴンを作成する
         /// </summary>
-        /// <param name="filepath">読み込むファイルのパス</param>
         /// <returns>スクリーン座標に変換したポリゴン</returns>
-        public IList<Polygon> Provide(string filepath)
+        public IList<Polygon> Provide()
         {
             // 処理の開始前のイベントを発生させる。
             ProvideBegin(this, EventArgs.Empty);
@@ -88,7 +97,7 @@ namespace MapViewer.Provider
             var stopwatch = Stopwatch.StartNew();
 
             // ファイルからポリゴンを読み込む。
-            var srcPolygons = CreateLoader().Load(filepath);
+            var srcPolygons = CreateLoader().Load(Filepath);
             Console.WriteLine("Loadede file : {0}", stopwatch.Elapsed);
 
             // 読み込んだポリゴンの座標をスクリーン座標に変換する。
