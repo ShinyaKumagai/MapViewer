@@ -1,4 +1,5 @@
 ﻿using MapViewer.Converter;
+using MapViewer.Geometory;
 using MapViewer.Loader;
 using MapViewer.Provider;
 using MapViewer.Renderer;
@@ -31,7 +32,7 @@ namespace MapViewer
         /// <summary>
         /// ポリゴンのレンダラ
         /// </summary>
-        private IRenderer _renderer;
+        private IRenderer<Polygon> _renderer;
 
         /// <summary>
         /// 現在表示している地図コントロール

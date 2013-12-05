@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MapViewer.Geometory;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,11 +11,11 @@ namespace MapViewer.Renderer
     /// <summary>
     /// <see cref="Graphics"/>を使用する地図レンダラ
     /// </summary>
-    public class GraphicsRenderer : IRenderer
+    public class GraphicsRenderer : IRenderer<Polygon>
     {
         #region Public methods
 
-        public void Render(Graphics graphics, IList<Geometory.Polygon> polygons)
+        public void Render(Graphics graphics, IList<Polygon> polygons)
         {
             foreach (var polygon in polygons)
             {
