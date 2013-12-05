@@ -23,7 +23,7 @@ namespace MapViewer.View
         /// <summary>
         /// ポリゴンのレンダラ
         /// </summary>
-        private IRenderer _renderer;
+        private IRenderer<Polygon> _renderer;
 
         /// <summary>
         /// 地図を構成するポリゴン
@@ -50,15 +50,15 @@ namespace MapViewer.View
         /// プロバイダからポリゴンを作成する
         /// </summary>
         /// <param name="provider">ポリゴンのプロバイダ</param>
-        public void Open(PolygonProvider provider)
+        public void Open(IProvider provider)
         {
-            provider.DisplaySize = ClientSize;
-
+            // 作成中はカーソルを待機状態にする
             Cursor = Cursors.WaitCursor;
+
             // ファイルから地図を構成するポリゴンを作成する
             Task.Factory.StartNew(() =>
             {
-                _polygons = provider.Provide();
+                _polygons = provider.Provide(ClientSize);
             })
             .ContinueWith((t) =>
             {

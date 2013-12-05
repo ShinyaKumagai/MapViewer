@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 namespace MapViewer.Renderer
 {
     /// <summary>
-    /// 地図の描画インターフェース
+    /// ポリゴンの描画インターフェース
     /// </summary>
+    /// <typeparam name="T">描画するポリゴン型</typeparam>
     public interface IRenderer<T>
     {
         #region Public methods
 
         /// <summary>
-        /// 描画処理
+        /// ポリゴンの描画処理
         /// </summary>
         /// <param name="graphics">グラフィックス</param>
         /// <param name="polygons">描画するポリゴン</param>

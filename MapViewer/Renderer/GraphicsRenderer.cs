@@ -19,7 +19,8 @@ namespace MapViewer.Renderer
         {
             foreach (var polygon in polygons)
             {
-                graphics.DrawLines(Pens.Black, polygon.Points.ToArray());
+                var pen = new Pen(polygon.Style.OutlineColor);
+                graphics.DrawLines(pen, polygon.Points.ToArray());
             }
         }
 

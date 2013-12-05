@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using MapViewer.Renderer;
 using MapViewer.Geometory;
 using OpenTK.Graphics.OpenGL;
+using MapViewer.Converter;
 
 namespace MapViewer.View
 {
@@ -26,12 +27,12 @@ namespace MapViewer.View
         /// <summary>
         /// ポリゴンのレンダラ
         /// </summary>
-        private IRenderer _renderer;
+        private IRenderer<GLPolygon> _renderer;
 
         /// <summary>
         /// 地図を構成するポリゴン
         /// </summary>
-        private IList<Polygon> _polygons;
+        private IList<GLPolygon> _polygons;
 
         #endregion
 
@@ -49,15 +50,14 @@ namespace MapViewer.View
 
         #region Public methods
 
-        public void Open(PolygonProvider provider)
+        public void Open(IProvider provider)
         {
-            provider.DisplaySize = ClientSize;
-
             Cursor = Cursors.WaitCursor;
             // ファイルから地図を構成するポリゴンを作成する
             Task.Factory.StartNew(() =>
             {
-                _polygons = provider.Provide();
+                var srcPolygons = provider.Provide(ClientSize);
+                _polygons = new VectorConverter().Convert(srcPolygons);
             })
             .ContinueWith((t) =>
             {
@@ -78,6 +78,10 @@ namespace MapViewer.View
         /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
+            if (_polygons != null || _polygons.Count > 0)
+            {
+                _renderer.Render(e.Graphics, _polygons);
+            }
             base.OnPaint(e);
         }
 
@@ -92,8 +96,8 @@ namespace MapViewer.View
         /// <param name="e"></param>
         private void OnLoad(object sender, EventArgs e)
         {
-            _polygons = new List<Polygon>();
-            _renderer = new GraphicsRenderer();
+            _polygons = new List<GLPolygon>();
+            _renderer = new OpenGLRenderer();
 
             //画面がちらつかないようにする
             SetStyle(ControlStyles.ResizeRedraw, true);
