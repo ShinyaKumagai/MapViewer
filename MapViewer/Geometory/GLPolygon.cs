@@ -1,23 +1,19 @@
-﻿using System;
+﻿using OpenTK;
+using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MapViewer.Geometory
 {
-    /// <summary>
-    /// 地図を構成するポリゴン
-    /// </summary>
-    public class Polygon : IPolygon<PointF>
+    public class GLPolygon : IPolygon<Vector2>
     {
         #region Public properties
 
         /// <summary>
         /// ポリゴンを構成する座標
         /// </summary>
-        public IList<PointF> Points
+        public IList<Vector2> Points
         {
             get;
             set;
@@ -29,12 +25,12 @@ namespace MapViewer.Geometory
 
         #region IEnumerable metthods
 
-        public IEnumerator<PointF> GetEnumerator()
+        public IEnumerator<Vector2> GetEnumerator()
         {
-           foreach (var coord in Points)
-           {
-               yield return coord;
-           }
+            foreach (var coord in Points)
+            {
+                yield return coord;
+            }
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
@@ -45,5 +41,6 @@ namespace MapViewer.Geometory
         #endregion
 
         #endregion
+
     }
 }
