@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MapViewer.Geometory;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -12,11 +13,11 @@ namespace MapViewer.Renderer
     /// <summary>
     /// OpenGLを使用する地図レンダラ
     /// </summary>
-    public class OpenGLRenderer : IRenderer
+    public class OpenGLRenderer : IRenderer<GLPolygon>
     {
         #region Public methods
 
-        public void Render(Graphics graphics, IList<Geometory.Polygon> polygons)
+        public void Render(Graphics graphics, IList<GLPolygon> polygons)
         {
             throw new NotImplementedException();
         }

@@ -11,7 +11,7 @@ namespace MapViewer.Renderer
     /// <summary>
     /// 地図の描画インターフェース
     /// </summary>
-    public interface IRenderer
+    public interface IRenderer<T>
     {
         #region Public methods
 
@@ -20,7 +20,7 @@ namespace MapViewer.Renderer
         /// </summary>
         /// <param name="graphics">グラフィックス</param>
         /// <param name="polygons">描画するポリゴン</param>
-        void Render(Graphics graphics, IList<Polygon> polygons);
+        void Render(Graphics graphics, IList<T> polygons);
 
         #endregion
     }
