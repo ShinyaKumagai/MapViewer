@@ -15,7 +15,7 @@ namespace MapViewer.Provider
     /// <summary>
     /// ファイルからポリゴンを作成するためのクラス
     /// </summary>
-    public abstract class PolygonProvider
+    public abstract class PolygonProvider : IProvider
     {
         #region Public properties
 
