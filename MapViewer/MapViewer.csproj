@@ -88,12 +88,19 @@
     <Compile Include="Provider\Loader\ILoader.cs" />
     <Compile Include="Geometory\Polygon.cs" />
     <Compile Include="Provider\PolygonProvider.cs" />
+    <Compile Include="Provider\IOpenable.cs" />
     <Compile Include="Renderer\OpenGLRenderer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderer\DirectXRenderer.cs" />
     <Compile Include="Renderer\GraphicsRenderer.cs" />
     <Compile Include="Renderer\IRenderer.cs" />
+    <Compile Include="View\GLMapControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\GLMapControl.Designer.cs">
+      <DependentUpon>GLMapControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MapControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -113,6 +120,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\GLMapControl.resx">
+      <DependentUpon>GLMapControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MapControl.resx">
       <DependentUpon>MapControl.cs</DependentUpon>
     </EmbeddedResource>
