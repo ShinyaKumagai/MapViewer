@@ -75,8 +75,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Geometory\GLPolygon.cs" />
+    <Compile Include="Geometory\IPolygon.cs" />
     <Compile Include="Provider\Converter\IConverter.cs" />
     <Compile Include="Provider\Converter\PolygonConverter.cs" />
+    <Compile Include="Provider\IProvider.cs" />
     <Compile Include="Provider\KmlProvider.cs" />
     <Compile Include="Provider\Loader\KmlLoader.cs" />
     <Compile Include="MapViewForm.cs">
