@@ -2,6 +2,7 @@
 using MapViewer.Loader;
 using MapViewer.Provider;
 using MapViewer.Renderer;
+using MapViewer.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,16 @@ namespace MapViewer
         /// ポリゴンのレンダラ
         /// </summary>
         private IRenderer _renderer;
+
+        /// <summary>
+        /// 現在表示している地図コントロール
+        /// </summary>
+        private UserControl _currentMapControl;
+
+        /// <summary>
+        /// <see cref="Graphics"/>を使用して地図を描画するコントロール
+        /// </summary>
+        private MapControl _mapControl;
 
         #endregion
 
@@ -62,60 +73,17 @@ namespace MapViewer
 
             try
             {
-
-                Cursor = Cursors.WaitCursor;
-
-                Task.Factory.StartNew(() =>
-                    {
-                        var provider = new KmlProvider()
+                dynamic map = _currentMapControl;
+                var provider = new KmlProvider()
                         {
-                            DisplaySize = ClientSize,
+                            Filepath = openFileDialog.FileName,
                         };
-                        _drawPolygons = provider.Provide(openFileDialog.FileName);
-                    })
-                .ContinueWith((t) =>
-                    {
-                        RequestRepaint();
-                        // 終了時にカーソルを戻す
-                        Cursor = Cursors.Default;
-                    },
-                TaskScheduler.FromCurrentSynchronizationContext());
+                map.Open(provider);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-
-            //IList<Geometory.Polygon> polygons = null;
-
-            //Cursor = Cursors.WaitCursor;
-            //Task.Factory.StartNew(() =>
-            //    {
-            //        // ファイルからポリゴンを作成する
-            //        return new KmlLoader().Load(openFileDialog.FileName);
-            //    })
-            //.ContinueWith((t) =>
-            //    {
-            //        // 読み込んだ地図を座標変換する
-            //        var converter = new PolygonConverter()
-            //        {
-            //            Polygons = t.Result,
-            //            DisplaySize = Math.Min(ClientSize.Width, ClientSize.Height),
-            //        };
-            //        return polygons = converter.Convert();
-            //    })
-            //.ContinueWith((t) =>
-            //    {
-            //        _drawPolygons = t.Result;
-            //        Console.WriteLine("Finished {0} polygons", polygons.Count);
-            //        // 異なる地図を描画する場合は以前の描画をクリアしておく
-            //        CreateGraphics().Clear(BackColor);
-            //        Invalidate();
-            //        // 終了時にカーソルを戻す
-            //        Cursor = Cursors.Default;
-            //    }, 
-            //    TaskScheduler.FromCurrentSynchronizationContext()
-            //);
         }
 
         /// <summary>
@@ -131,31 +99,19 @@ namespace MapViewer
             // クライアント領域のサイズを設定する
             SizeFromClientSize(new Size(1000, 1000));
 
+            // デフォルトではグラフィックスを使用した地図を描画する
+            _mapControl = new MapControl()
+            {
+                Size = ClientSize
+            };
+            Controls.Add(_mapControl);
+            _currentMapControl = _mapControl;
+
             //画面がちらつかないようにする
             SetStyle(ControlStyles.ResizeRedraw, true);
         }
-       
-        /// <summary>
-		/// 画面を描画するときに呼ばれる
-		/// </summary>
-		/// <param name="e"></param>
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            if (_drawPolygons.Count > 0)
-            {
-                _renderer.Render(e.Graphics,_drawPolygons);
-            }
-            base.OnPaint(e);
-        }
 
         #region Private methods
-
-        private void RequestRepaint()
-        {
-            // 異なる地図を描画する場合は以前の描画をクリアしておく
-            CreateGraphics().Clear(BackColor);
-            Invalidate();
-        }
 
         #endregion
     }
