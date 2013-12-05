@@ -14,13 +14,29 @@ namespace MapViewer.Geometory
     {
         #region Public properties
 
-        /// <summary>
-        /// ポリゴンを構成する座標
-        /// </summary>
         public IList<PointF> Points
         {
             get;
             set;
+        }
+
+        public Style Style
+        {
+            get;
+            set;
+        }
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// 新しいインスタンスを作成する
+        /// </summary>
+        public Polygon()
+        {
+            Points = new List<PointF>();
+            Style = new Style();
         }
 
         #endregion

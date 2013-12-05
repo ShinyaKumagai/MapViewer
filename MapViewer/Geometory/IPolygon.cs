@@ -6,9 +6,9 @@ using System.Text;
 namespace MapViewer.Geometory
 {
     /// <summary>
-    /// 
+    /// ポリゴンのインターフェース
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">座標型</typeparam>
     public interface IPolygon<T> : IEnumerable<T>
     {
         #region Public properties
@@ -17,6 +17,15 @@ namespace MapViewer.Geometory
         /// ポリゴンを構成する座標
         /// </summary>
         IList<T> Points
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// ポリゴンのスタイル
+        /// </summary>
+        Style Style
         {
             get;
             set;

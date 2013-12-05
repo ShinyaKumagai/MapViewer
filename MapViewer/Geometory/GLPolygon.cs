@@ -6,17 +6,36 @@ using System.Text;
 
 namespace MapViewer.Geometory
 {
+    /// <summary>
+    /// OpenGL用のポリゴン
+    /// </summary>
     public class GLPolygon : IPolygon<Vector2>
     {
         #region Public properties
 
-        /// <summary>
-        /// ポリゴンを構成する座標
-        /// </summary>
         public IList<Vector2> Points
         {
             get;
             set;
+        }
+
+        public Style Style
+        {
+            get;
+            set;
+        }
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// 新しいインスタンスを作成する
+        /// </summary>
+        public GLPolygon()
+        {
+            Points = new List<Vector2>();
+            Style = new Style();
         }
 
         #endregion
@@ -41,6 +60,5 @@ namespace MapViewer.Geometory
         #endregion
 
         #endregion
-
     }
 }
