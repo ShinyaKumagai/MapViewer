@@ -1,4 +1,5 @@
 ﻿using MapViewer.Converter;
+using MapViewer.Geometory;
 using MapViewer.Loader;
 using MapViewer.Provider;
 using MapViewer.Renderer;
@@ -30,7 +31,7 @@ namespace MapViewer
         /// <summary>
         /// ポリゴンのレンダラ
         /// </summary>
-        private IRenderer _renderer;
+        private IRenderer<Polygon> _renderer;
 
         #endregion
 
@@ -85,37 +86,6 @@ namespace MapViewer
             {
                 Console.WriteLine(ex.Message);
             }
-
-            //IList<Geometory.Polygon> polygons = null;
-
-            //Cursor = Cursors.WaitCursor;
-            //Task.Factory.StartNew(() =>
-            //    {
-            //        // ファイルからポリゴンを作成する
-            //        return new KmlLoader().Load(openFileDialog.FileName);
-            //    })
-            //.ContinueWith((t) =>
-            //    {
-            //        // 読み込んだ地図を座標変換する
-            //        var converter = new PolygonConverter()
-            //        {
-            //            Polygons = t.Result,
-            //            DisplaySize = Math.Min(ClientSize.Width, ClientSize.Height),
-            //        };
-            //        return polygons = converter.Convert();
-            //    })
-            //.ContinueWith((t) =>
-            //    {
-            //        _drawPolygons = t.Result;
-            //        Console.WriteLine("Finished {0} polygons", polygons.Count);
-            //        // 異なる地図を描画する場合は以前の描画をクリアしておく
-            //        CreateGraphics().Clear(BackColor);
-            //        Invalidate();
-            //        // 終了時にカーソルを戻す
-            //        Cursor = Cursors.Default;
-            //    }, 
-            //    TaskScheduler.FromCurrentSynchronizationContext()
-            //);
         }
 
         /// <summary>
