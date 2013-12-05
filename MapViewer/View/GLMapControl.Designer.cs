@@ -1,6 +1,6 @@
 ﻿namespace MapViewer.View
 {
-    partial class MapControl
+    partial class GLMapControl
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -30,11 +30,11 @@
         {
             this.SuspendLayout();
             // 
-            // MapControl
+            // GLMapControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "MapControl";
+            this.Name = "GLMapControl";
             this.Size = new System.Drawing.Size(500, 500);
             this.Load += new System.EventHandler(this.OnLoad);
             this.ResumeLayout(false);
