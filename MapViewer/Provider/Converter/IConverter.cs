@@ -11,7 +11,8 @@ namespace MapViewer.Converter
     /// <summary>
     /// ポリゴンを画面座標に変化するためのコンバータ
     /// </summary>
-    public interface IConverter
+    /// <typeparam name="T">変換後のポリゴン型</typeparam>
+    public interface IConverter<T>
     {
         /// <summary>
         /// ポリゴンの座標を画面座標に変換する
@@ -19,6 +20,6 @@ namespace MapViewer.Converter
         /// <returns>
         /// 座標変換したポリゴン
         /// </returns>
-        IList<Polygon> Convert();
+        IList<T> Convert(IList<Polygon> srcPolygons);
     }
 }

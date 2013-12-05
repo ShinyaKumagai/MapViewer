@@ -72,13 +72,12 @@ namespace MapViewer
                 return;
             }
 
+            string filepath = openFileDialog.FileName;
             try
             {
                 dynamic map = _currentMapControl;
-                var provider = new KmlProvider()
-                        {
-                            Filepath = openFileDialog.FileName,
-                        };
+                var provider = new KmlProvider(filepath);
+
                 map.Open(provider);
             }
             catch (Exception ex)
