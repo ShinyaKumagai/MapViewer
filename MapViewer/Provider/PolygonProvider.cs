@@ -28,35 +28,6 @@ namespace MapViewer.Provider
             set;
         }
 
-        /// <summary>
-        /// 表示領域のサイズ
-        /// </summary>
-        /// <remarks>
-        /// ファイルから読み込んだポリゴンをスクリーン座標に変換する際に使用する。
-        /// </remarks>
-        public Size DisplaySize
-        {
-            get;
-            set;
-        }
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// 新しいインスタンスを作成する
-        /// </summary>
-        public PolygonProvider()
-        {
-            DisplaySize = new Size(1000, 1000);
-            Filepath = String.Empty;
-
-            // イベントにヌルオブジェクトをセットしておく
-            ProvideBegin += (_s, _e) => { };
-            ProvideEnd += (_s, _e) => { };
-        }
-
         #endregion
 
         #region Public events
@@ -73,23 +44,34 @@ namespace MapViewer.Provider
 
         #endregion
 
-        #region Public methods
-
-        #region Abstract methods
+        #region Constructor
 
         /// <summary>
-        /// ポリゴンのローダを取得する
+        /// 新しいインスタンスを作成する
         /// </summary>
-        /// <returns>ポリゴンのローダ</returns>
-        protected abstract ILoader CreateLoader();
+        public PolygonProvider() :
+            this(String.Empty)
+        {
+        }
+
+        /// <summary>
+        /// 新しいインスタンスを作成する
+        /// </summary>
+        /// <param name="filepath">ファイルパス</param>
+        public PolygonProvider(string filepath)
+        {
+            Filepath = filepath;
+
+            // イベントにヌルオブジェクトをセットしておく
+            ProvideBegin += (_s, _e) => { };
+            ProvideEnd += (_s, _e) => { };
+        }
 
         #endregion
 
-        /// <summary>
-        /// 読み込んだファイルから>スクリーン座標のポリゴンを作成する
-        /// </summary>
-        /// <returns>スクリーン座標に変換したポリゴン</returns>
-        public IList<Polygon> Provide()
+        #region Public methods
+
+        public IList<Polygon> Provide(Size displaySize)
         {
             // 処理の開始前のイベントを発生させる。
             ProvideBegin(this, EventArgs.Empty);
@@ -101,12 +83,11 @@ namespace MapViewer.Provider
             Console.WriteLine("Loadede file : {0}", stopwatch.Elapsed);
 
             // 読み込んだポリゴンの座標をスクリーン座標に変換する。
-            var converter = new PolygonConverter()
+            var converter = new ScreenConverter()
             {
-                Polygons = srcPolygons,
-                DisplaySize = Math.Min(DisplaySize.Width, DisplaySize.Height),
+                DisplayLength = Math.Min(displaySize.Width, displaySize.Height),
             };
-            var destPolygons = converter.Convert();
+            var destPolygons = converter.Convert(srcPolygons);
             Console.WriteLine("Converted polygons : {0}", stopwatch.Elapsed);
 
             // 処理の開始後のイベントを発生させる
@@ -116,5 +97,16 @@ namespace MapViewer.Provider
         }
 
         #endregion
+
+        #region Abstract methods
+
+        /// <summary>
+        /// ポリゴンのローダを取得する
+        /// </summary>
+        /// <returns>ポリゴンのローダ</returns>
+        protected abstract ILoader CreateLoader();
+
+        #endregion
+
     }
 }

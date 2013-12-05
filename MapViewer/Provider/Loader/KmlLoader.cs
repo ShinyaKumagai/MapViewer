@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace MapViewer.Loader
 {
     /// <summary>
-    /// KMLファイルから地図データを読み込むためのローダ
+    /// KMLファイルからポリゴンを読み込むためのローダ
     /// </summary>
     public class KmlLoader : ILoader
     {
