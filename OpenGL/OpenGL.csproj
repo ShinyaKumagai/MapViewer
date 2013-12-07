@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MapViewer.OpenGL</RootNamespace>
     <AssemblyName>MapViewer.OpenGL</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,8 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBindable.cs" />
+    <Compile Include="Camera\Camera2D.cs" />
+    <Compile Include="Camera\ICamera2D.cs" />
+    <Compile Include="Graphics\RectangleF.cs" />
+    <Compile Include="VBO\IBindable.cs" />
+    <Compile Include="VBO\IDeletable.cs" />
+    <Compile Include="VBO\IRenderable.cs" />
+    <Compile Include="VBO\IGeneratable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VBO\Quad\Quad2D.cs" />
+    <Compile Include="VBO\VertexBufferObject.cs" />
+    <Compile Include="Vertex\IVertexAttribute.cs" />
+    <Compile Include="Vertex\VertexPosition.cs" />
+    <Compile Include="Vertex\VertexPositionColor.cs" />
+    <Compile Include="Vertex\VertexPositionColorTexture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
