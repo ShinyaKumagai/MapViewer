@@ -1,11 +1,12 @@
 ﻿using MapViewer.Geometory;
+using MapViewer.Geometory.OpenGL;
 using OpenTK;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MapViewer.Converter
+namespace MapViewer.Converter.OpenGL
 {
     /// <summary>
     /// <see cref="Vector2"/>型のポリゴン変換する
@@ -14,7 +15,7 @@ namespace MapViewer.Converter
     /// <see cref="IProvider"/>で作成するポリゴンは<see cref="PointF"/>型なので
     /// OpenGL用の座標にに変化する必要がある。
     /// </remarks>
-    public class VectorConverter : IConverter<GLPolygon>
+    public class GLVectorConverter : IConverter<GLPolygon>
     {
         #region Public properties
 
@@ -34,7 +35,7 @@ namespace MapViewer.Converter
         /// <summary>
         /// 新しいインスタンスを作成する
         /// </summary>
-        public VectorConverter() :
+        public GLVectorConverter() :
             this(new List<Polygon>())
         {
 
@@ -44,7 +45,7 @@ namespace MapViewer.Converter
         /// 新しいインスタンスを作成する
         /// </summary>
         /// <param name="srcPolygon">変換元のポリゴン</param>
-        public VectorConverter(IList<Polygon> srcPolygon)
+        public GLVectorConverter(IList<Polygon> srcPolygon)
         {
 
         }
