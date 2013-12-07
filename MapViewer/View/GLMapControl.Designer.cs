@@ -1,4 +1,4 @@
-﻿namespace MapViewer.View
+﻿namespace MapViewer.View.OpenGL
 {
     partial class GLMapControl
     {

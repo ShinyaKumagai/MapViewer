@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MapViewer.Geometory
+namespace MapViewer.Geometory.OpenGL
 {
     /// <summary>
     /// OpenGL用のポリゴン

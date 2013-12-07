@@ -80,7 +80,8 @@
     <Compile Include="Geometory\Style\Style.cs" />
     <Compile Include="Provider\Converter\IConverter.cs" />
     <Compile Include="Provider\Converter\ScreenConverter.cs" />
-    <Compile Include="Provider\Converter\VectorConverter.cs" />
+    <Compile Include="Provider\Converter\GLVectorConverter.cs" />
+    <Compile Include="Provider\GLPolygonProvider.cs" />
     <Compile Include="Provider\IProvider.cs" />
     <Compile Include="Provider\KmlProvider.cs" />
     <Compile Include="Provider\Loader\KmlLoader.cs" />
