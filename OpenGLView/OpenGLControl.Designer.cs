@@ -36,10 +36,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "OpenGLControl";
             this.Size = new System.Drawing.Size(400, 400);
+            this.Load += new System.EventHandler(this.OpenGLControl_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.OpenGLControl_Paint);
+            this.Resize += new System.EventHandler(this.OpenGLControl_Resize);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
     }
 }

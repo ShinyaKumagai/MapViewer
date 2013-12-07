@@ -1,5 +1,4 @@
-﻿using OpenTK.Graphics.OpenGL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +16,7 @@ namespace MapViewer.OpenGL
         /// <summary>
         /// OpenGLの操作対象に設定する
         /// </summary>
-        /// <param name="gl">OpenGLコンテキスト</param>
-        void Bind(GL gl);
+        void Bind();
 
         /// <summary>
         /// OpenGLの操作対象から解除する
