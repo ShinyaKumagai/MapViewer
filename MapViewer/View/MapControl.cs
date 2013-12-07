@@ -50,7 +50,7 @@ namespace MapViewer.View
         /// プロバイダからポリゴンを作成する
         /// </summary>
         /// <param name="provider">ポリゴンのプロバイダ</param>
-        public void Open(IProvider provider)
+        public void Open(IProvider<Polygon> provider)
         {
             // 作成中はカーソルを待機状態にする
             Cursor = Cursors.WaitCursor;

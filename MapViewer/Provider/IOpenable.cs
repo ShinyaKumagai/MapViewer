@@ -1,4 +1,5 @@
-﻿using MapViewer.Provider;
+﻿using MapViewer.Geometory;
+using MapViewer.Provider;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace MapViewer.Provider
         /// プロバイダからポリゴンを作成する
         /// </summary>
         /// <param name="provider">ポリゴンのプロバイダ</param>
-        void Open(IProvider provider);
+        void Open(IProvider<Polygon> provider);
 
         #endregion
     }

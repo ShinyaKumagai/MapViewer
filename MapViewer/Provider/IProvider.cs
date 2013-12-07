@@ -10,7 +10,7 @@ namespace MapViewer.Provider
     /// <summary>
     /// ポリゴンを作成するためのインターフェース
     /// </summary>
-    public interface IProvider
+    public interface IProvider<T>
     {
         #region Public methods
 
@@ -22,7 +22,7 @@ namespace MapViewer.Provider
         /// <remarks>
         /// ポリゴンの座標はスクリーン座標に変換済み。
         /// </remarks>
-        IList<Polygon> Provide(Size displaySize);
+        IList<T> Provide(Size displaySize);
 
         #endregion
     }

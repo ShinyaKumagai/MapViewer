@@ -13,8 +13,11 @@ using MapViewer.Renderer;
 using MapViewer.Geometory;
 using OpenTK.Graphics.OpenGL;
 using MapViewer.Converter;
+using MapViewer.Provider.OpenGL;
+using MapViewer.Geometory.OpenGL;
+using MapViewer.Renderer.OpenGL;
 
-namespace MapViewer.View
+namespace MapViewer.View.OpenGL
 {
     /// <summary>
     /// OpenGLを使用して地図を描画するコントロール
@@ -50,14 +53,13 @@ namespace MapViewer.View
 
         #region Public methods
 
-        public void Open(IProvider provider)
+        public void Open(IProvider<Polygon> provider)
         {
             Cursor = Cursors.WaitCursor;
             // ファイルから地図を構成するポリゴンを作成する
             Task.Factory.StartNew(() =>
             {
-                var srcPolygons = provider.Provide(ClientSize);
-                _polygons = new VectorConverter().Convert(srcPolygons);
+                _polygons = new GLPolygonProvider(provider).Provide(ClientSize);
             })
             .ContinueWith((t) =>
             {
