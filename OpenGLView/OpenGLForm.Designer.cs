@@ -28,33 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.openGLControl1 = new OpenGLView.OpenGLControl();
+            this.glUserControl11 = new OpenGLView.GLUserControl1();
             this.SuspendLayout();
             // 
-            // openGLControl1
+            // glUserControl11
             // 
-            this.openGLControl1.BackColor = System.Drawing.Color.Black;
-            this.openGLControl1.Location = new System.Drawing.Point(12, 12);
-            this.openGLControl1.Name = "openGLControl1";
-            this.openGLControl1.Size = new System.Drawing.Size(400, 400);
-            this.openGLControl1.TabIndex = 0;
-            this.openGLControl1.VSync = false;
+            this.glUserControl11.BackColor = System.Drawing.Color.Black;
+            this.glUserControl11.Location = new System.Drawing.Point(12, 12);
+            this.glUserControl11.Name = "glUserControl11";
+            this.glUserControl11.Size = new System.Drawing.Size(402, 401);
+            this.glUserControl11.TabIndex = 0;
+            this.glUserControl11.VSync = false;
+            this.glUserControl11.Load += new System.EventHandler(this.glUserControl11_Load);
+            this.glUserControl11.Paint += new System.Windows.Forms.PaintEventHandler(this.glUserControl11_Paint);
+            this.glUserControl11.Resize += new System.EventHandler(this.glUserControl11_Resize);
             // 
             // OpenGLForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(426, 425);
-            this.Controls.Add(this.openGLControl1);
+            this.Controls.Add(this.glUserControl11);
             this.Name = "OpenGLForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.OpenGLForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private OpenGLControl openGLControl1;
+        private GLUserControl1 glUserControl11;
+
+
     }
 }
 

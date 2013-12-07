@@ -9,51 +9,60 @@ using System.Windows.Forms;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Graphics;
+using MapViewer.OpenGL.VBO;
+using MapViewer.OpenGL.Camera;
 
 namespace OpenGLView
 {
     public partial class OpenGLControl : GLControl
     {
+        private Quad2D _quad2D;
+        private Camera2D _camera;
+
+
         public OpenGLControl()
         {
             InitializeComponent();
+
+            _camera = new Camera2D(new Vector2(ClientSize.Width, ClientSize.Height));
+        }
+
+        public void Unload()
+        {
+            _quad2D.Delete();
         }
 
         private void OpenGLControl_Load(object sender, EventArgs e)
         {
-            GL.ClearColor(Color.White);
-            GL.Enable(EnableCap.DepthTest);
+            // ポリゴンの裏面を描画しないようにする
+            GL.Enable(EnableCap.CullFace);
+            GL.CullFace(CullFaceMode.Back);
+            // 頂点の順番を半時計回りにすると表になる
+            GL.FrontFace(FrontFaceDirection.Ccw);
+
+            _quad2D = new Quad2D(new Vector2(100, 100));
         }
 
         private void OpenGLControl_Resize(object sender, EventArgs e)
         {
-            GL.Viewport(0, 0, ClientSize.Width, ClientSize.Height);
-            GL.MatrixMode(MatrixMode.Projection);
-            Matrix4 projection = Matrix4.CreatePerspectiveFieldOfView((float)Math.PI / 4,
-                (float)ClientSize.Width / (float)ClientSize.Height, 1.0f, 64.0f);
-            GL.LoadMatrix(ref projection);
+            GL.Viewport(ClientRectangle);
+            _camera.ClipSize = new Vector2(ClientSize.Width, ClientSize.Height);
+
+            //GL.MatrixMode(MatrixMode.Projection);
+            //Matrix4 projection = Matrix4.CreatePerspectiveFieldOfView((float)Math.PI / 4,
+            //    (float)ClientSize.Width / (float)ClientSize.Height, 1.0f, 64.0f);
+            //GL.LoadMatrix(ref projection);
         }
 
         private void OpenGLControl_Paint(object sender, PaintEventArgs e)
         {
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            MakeCurrent();
 
-            GL.MatrixMode(MatrixMode.Modelview);
-            Matrix4 modelview = Matrix4.LookAt(Vector3.Zero, Vector3.UnitZ, Vector3.UnitY);
-            GL.LoadMatrix(ref modelview);
+            GL.Clear(ClearBufferMask.ColorBufferBit);
+            GL.ClearColor(Color.White);
 
-            GL.Begin(BeginMode.Quads);
+            _camera.Update();
 
-            GL.Color4(Color4.White);
-            GL.Vertex3(-1.0f, 1.0f, 4.0f);
-            GL.Color4(Color4.Red);
-            GL.Vertex3(-1.0f, -1.0f, 4.0f);
-            GL.Color4(Color4.Lime);
-            GL.Vertex3(1.0f, -1.0f, 4.0f);
-            GL.Color4(Color4.Blue);
-            GL.Vertex3(1.0f, 1.0f, 4.0f);
-
-            GL.End();
             SwapBuffers();
         }
     }
