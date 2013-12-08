@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MapViewer.Renderer;
 using MapViewer.Geometory;
 using MapViewer.Provider;
+using System.Diagnostics;
 
 namespace MapViewer.View
 {
@@ -81,7 +82,11 @@ namespace MapViewer.View
         {
             if (_polygons.Count > 0)
             {
+                var stopwatch = Stopwatch.StartNew();
+
                 _renderer.Render(e.Graphics, _polygons);
+
+                Console.WriteLine("elapsedTime : {0}", stopwatch.Elapsed);
             }
             base.OnPaint(e);
         }
