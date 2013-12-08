@@ -11,7 +11,7 @@ namespace MapViewer.Converter
     /// <summary>
     /// ポリゴンを画面座標に変換する
     /// </summary>
-    public class ScreenConverter : IConverter<Polygon>
+    public class ScreenCoordConverter : IConverter<Polygon>
     {
         #region Public properties
 
@@ -34,7 +34,7 @@ namespace MapViewer.Converter
         /// <summary>
         /// 新しいインスタンスを作成する
         /// </summary>
-        public ScreenConverter() :
+        public ScreenCoordConverter() :
             this(1f)
         {
         }
@@ -44,7 +44,7 @@ namespace MapViewer.Converter
         /// </summary>
         /// <param name="srcPolygons">変換元のポリゴン</param>
         /// <param name="displayLength"></param>
-        public ScreenConverter(float displayLength)
+        public ScreenCoordConverter(float displayLength)
         {
             DisplayLength = displayLength;
         }
@@ -65,7 +65,6 @@ namespace MapViewer.Converter
             // 全ポリゴンの表示範囲を計算する
             var min = new PointF(float.MaxValue, float.MaxValue);
             var max = new PointF(float.MinValue, float.MinValue);
-
             foreach (var polygon in sourcePolygons)
             {
                 foreach (var p in polygon)

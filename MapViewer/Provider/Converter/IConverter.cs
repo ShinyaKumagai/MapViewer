@@ -17,9 +17,10 @@ namespace MapViewer.Converter
         /// <summary>
         /// ポリゴンの座標を画面座標に変換する
         /// </summary>
+        /// <param name="sourcePolygons">変換元のポリゴン</param>
         /// <returns>
         /// 座標変換したポリゴン
         /// </returns>
-        IList<T> Convert(IList<Polygon> srcPolygons);
+        IList<T> Convert(IList<Polygon> sourcePolygons);
     }
 }
