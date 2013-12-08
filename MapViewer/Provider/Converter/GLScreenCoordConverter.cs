@@ -20,19 +20,6 @@ namespace MapViewer.Converter.OpenGL
     /// </remarks>
     public class GLScreenCoordConverter : IConverter<GLPolygon>
     {
-        #region Public properties
-
-        /// <summary>
-        /// 変換対象のポリゴン
-        /// </summary>
-        public IList<Polygon> SourcePolygons
-        {
-            private get;
-            set;
-        }
-
-        #endregion
-
         #region Constrcutor
 
         /// <summary>
@@ -49,7 +36,7 @@ namespace MapViewer.Converter.OpenGL
 
         public IList<GLPolygon> Convert(IList<Polygon> sourcePolygons)
         {
-            if (SourcePolygons == null || SourcePolygons.Count == 0)
+            if (sourcePolygons == null || sourcePolygons.Count == 0)
             {
                 return null;
             }
@@ -74,10 +61,10 @@ namespace MapViewer.Converter.OpenGL
                 Y = min.Y + ((max.Y - min.Y) * .5f)
             };
 
-            var destPolygons = new List<GLPolygon>(SourcePolygons.Count);
+            var destPolygons = new List<GLPolygon>(sourcePolygons.Count);
             // PointF型の座標をVector2型に変換する。
             // OpenGLのスクリーン座標系にしておく。
-            foreach (var srcPolygon in SourcePolygons)
+            foreach (var srcPolygon in sourcePolygons)
             {
                 var destPolygon = new GLPolygon();
                 destPolygon.Points =  srcPolygon.Select(p => 
