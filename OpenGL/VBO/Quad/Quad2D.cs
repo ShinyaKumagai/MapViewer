@@ -104,7 +104,7 @@ namespace MapViewer.OpenGL.VBO
 
         private void CreateVertexBufferObject()
         {
-            _vbo = new VertexBufferObject<VertexPosition>(new VertexPosition.Attriute());
+            _vbo = new VertexBufferObject<VertexPosition>(new VertexPosition.Attribute());
             var vertices = new VertexPosition[4]
             {
                 // 左下

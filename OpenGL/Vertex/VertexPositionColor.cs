@@ -5,6 +5,7 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,14 +21,14 @@ namespace MapViewer.OpenGL.Vertex
         /// <summary>
         /// 頂点情報の定義
         /// </summary>
-        public sealed class Attriute : IVertexAttribute
+        public sealed class Attribute : IVertexAttribute
         {
             #region Private fields
 
             /// <summary>
             /// 頂点のサイズ
             /// </summary>
-            private static readonly int _sizeInBytes = (2 + 4) * 4;
+            private static readonly int _sizeInBytes;
 
             #endregion
 
@@ -43,6 +44,22 @@ namespace MapViewer.OpenGL.Vertex
             #endregion
 
             #endregion
+
+            #region Constrcutor
+
+            /// <summary>
+            /// スタティックコンストラクタ
+            /// </summary>
+            static Attribute()
+            {
+                _sizeInBytes = Marshal.SizeOf(default(Vector2)) + Marshal.SizeOf(default(Color4));
+            }
+
+            #endregion
+
+            #region Public methods
+
+            #region IBindable
 
             public void Bind()
             {
@@ -61,6 +78,10 @@ namespace MapViewer.OpenGL.Vertex
                 GL.DisableClientState(ArrayCap.VertexArray);
                 GL.DisableClientState(ArrayCap.ColorArray);
             }
+
+            #endregion
+
+            #endregion
         }
 
         #endregion
