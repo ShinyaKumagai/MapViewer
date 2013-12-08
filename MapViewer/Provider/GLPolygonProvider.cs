@@ -63,7 +63,8 @@ namespace MapViewer.Provider.OpenGL
             {
                 return null;
             }
-            return new GLVectorConverter().Convert(srcPolygons);
+            // Formのスクリーン座標からOpenGLのスクリーン座標に変換する
+            return new GLScreenCoordConverter().Convert(srcPolygons);
         }
 
         #endregion

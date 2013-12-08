@@ -1,6 +1,9 @@
-﻿using MapViewer.Loader;
+﻿using MapViewer.Converter;
+using MapViewer.Geometory;
+using MapViewer.Loader;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
@@ -36,6 +39,12 @@ namespace MapViewer.Provider
         protected override ILoader CreateLoader()
         {
             return new KmlLoader();
+        }
+
+        protected override IConverter<Polygon> CreateConveter(Size displaySize)
+        {
+            int displayLength = Math.Min(displaySize.Width, displaySize.Height);
+            return new ScreenCoordConverter(displayLength);
         }
 
         #endregion

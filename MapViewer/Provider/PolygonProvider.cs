@@ -80,14 +80,10 @@ namespace MapViewer.Provider
 
             // ファイルからポリゴンを読み込む。
             var srcPolygons = CreateLoader().Load(Filepath);
-            Console.WriteLine("Loadede file : {0}", stopwatch.Elapsed);
+            Console.WriteLine("Loaded file : {0}", stopwatch.Elapsed);
 
             // 読み込んだポリゴンの座標をスクリーン座標に変換する。
-            var converter = new ScreenConverter()
-            {
-                DisplayLength = Math.Min(displaySize.Width, displaySize.Height),
-            };
-            var destPolygons = converter.Convert(srcPolygons);
+            var destPolygons = CreateConveter(displaySize).Convert(srcPolygons);
             Console.WriteLine("Converted polygons : {0}", stopwatch.Elapsed);
 
             // 処理の開始後のイベントを発生させる
@@ -105,6 +101,13 @@ namespace MapViewer.Provider
         /// </summary>
         /// <returns>ポリゴンのローダ</returns>
         protected abstract ILoader CreateLoader();
+
+        /// <summary>
+        /// 座標変換のためのコンバータを作成する
+        /// </summary>
+        /// <param name="displaySize">描画領域のサイズ</param>
+        /// <returns> 座標変換のためのコンバータ</returns>
+        protected abstract IConverter<Polygon> CreateConveter(Size displaySize);
 
         #endregion
 
