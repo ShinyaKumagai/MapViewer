@@ -27,17 +27,7 @@ namespace MapViewer
         /// <summary>
         /// 描画するポリゴン
         /// </summary>
-        private IList<Geometory.Polygon> _drawPolygons;
-
-        /// <summary>
-        /// ポリゴンのレンダラ
-        /// </summary>
-        private IRenderer<Polygon> _renderer;
-
-        /// <summary>
-        /// 現在表示している地図コントロール
-        /// </summary>
-        private UserControl _currentMapControl;
+        private IList<Polygon> _drawPolygons;
 
         /// <summary>
         /// <see cref="Graphics"/>を使用して地図を描画するコントロール
@@ -75,10 +65,8 @@ namespace MapViewer
             string filepath = openFileDialog.FileName;
             try
             {
-                dynamic map = _currentMapControl;
                 var provider = new KmlProvider(filepath);
-
-                map.Open(provider);
+                _mapControl.Open(provider);
             }
             catch (Exception ex)
             {
@@ -94,7 +82,6 @@ namespace MapViewer
         private void OnLoad(object sender, EventArgs e)
         {
             _drawPolygons = new List<Geometory.Polygon>();
-            _renderer = new GraphicsRenderer();
 
             // クライアント領域のサイズを設定する
             SizeFromClientSize(new Size(1000, 1000));
@@ -105,7 +92,6 @@ namespace MapViewer
                 Size = ClientSize
             };
             Controls.Add(_mapControl);
-            _currentMapControl = _mapControl;
 
             //画面がちらつかないようにする
             SetStyle(ControlStyles.ResizeRedraw, true);
