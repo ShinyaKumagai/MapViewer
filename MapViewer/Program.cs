@@ -16,7 +16,7 @@ namespace MapViewer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MapViewForm());
+            Application.Run(new GLMapViewForm());
         }
     }
 }

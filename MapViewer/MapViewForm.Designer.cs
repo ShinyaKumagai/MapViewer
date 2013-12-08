@@ -41,6 +41,7 @@
             this.ファイルToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
+            this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip.Size = new System.Drawing.Size(984, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
@@ -73,7 +74,7 @@
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MapViewForm";
-            this.Text = "KmlMapViewer";
+            this.Text = "Map Viewer";
             this.Load += new System.EventHandler(this.OnLoad);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

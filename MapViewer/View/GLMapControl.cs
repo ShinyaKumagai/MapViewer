@@ -16,6 +16,8 @@ using MapViewer.Converter;
 using MapViewer.Provider.OpenGL;
 using MapViewer.Geometory.OpenGL;
 using MapViewer.Renderer.OpenGL;
+using MapViewer.OpenGL.VBO.Primitive;
+using MapViewer.OpenGL.Vertex;
 
 namespace MapViewer.View.OpenGL
 {
@@ -23,19 +25,18 @@ namespace MapViewer.View.OpenGL
     /// OpenGLを使用して地図を描画するコントロール
     /// </summary>
 
-    public partial class GLMapControl : GLControl, IOpenable
+    public partial class GLMapControl : GLControl, IOpenable, IClosable
     {
-        #region Private fields
-
-        /// <summary>
-        /// ポリゴンのレンダラ
-        /// </summary>
-        private IRenderer<GLPolygon> _renderer;
+        #region Public properties
 
         /// <summary>
         /// 地図を構成するポリゴン
         /// </summary>
-        private IList<GLPolygon> _polygons;
+        public IList<LinePolygon> LinePolygons
+        {
+            get;
+            private set;
+        }
 
         #endregion
 
@@ -55,41 +56,41 @@ namespace MapViewer.View.OpenGL
 
         public void Open(IProvider<Polygon> provider)
         {
+            // ロード中はカーソルを待機状態にする
             Cursor = Cursors.WaitCursor;
-            // ファイルから地図を構成するポリゴンを作成する
-            Task.Factory.StartNew(() =>
-            {
-                _polygons = new GLPolygonProvider(provider).Provide(ClientSize);
-            })
-            .ContinueWith((t) =>
-            {
-                RequestRepaint();
-                // 終了時にカーソルを戻す
-                Cursor = Cursors.Default;
-            },
-            TaskScheduler.FromCurrentSynchronizationContext());
+
+            // ファイルからGL用のラインポリゴンを作成する
+            var polygons = new GLPolygonProvider(provider).Provide(ClientSize);
+            CreateLinePolygons(polygons);
+
+            // 終了時にカーソルを戻す
+            Cursor = Cursors.Default;
+            // コントロールを再描画する
+            Invalidate();
         }
 
         #endregion
 
-        #region Protected methods
+        #region IClosable
 
-        /// <summary>
-        /// 再描画する際に呼ばれる処理
-        /// </summary>
-        /// <param name="e"></param>
-        protected override void OnPaint(PaintEventArgs e)
+        public void Close()
         {
-            if (_polygons != null || _polygons.Count > 0)
+            if (LinePolygons == null)
             {
-                _renderer.Render(e.Graphics, _polygons);
+                return;
             }
-            base.OnPaint(e);
+
+            foreach (var polyline in LinePolygons)
+            {
+                polyline.Delete();
+            }
         }
 
         #endregion
 
         #region Private methods
+
+        #region Events
 
         /// <summary>
         /// コントロールが読み込まれたときに呼ばれる処理
@@ -98,18 +99,34 @@ namespace MapViewer.View.OpenGL
         /// <param name="e"></param>
         private void OnLoad(object sender, EventArgs e)
         {
-            _polygons = new List<GLPolygon>();
-            _renderer = new OpenGLRenderer();
+            LinePolygons = new List<LinePolygon>();
 
             //画面がちらつかないようにする
             SetStyle(ControlStyles.ResizeRedraw, true);
         }
 
-        private void RequestRepaint()
+        #endregion
+
+        private void CreateLinePolygons(IList<GLPolygon> polygons)
         {
-            // 異なる地図を描画する場合は以前の描画をクリアしておく
-            GL.ClearColor(BackColor);
-            Invalidate();
+            LinePolygons = new List<LinePolygon>(polygons.Count);
+
+            // 作成したポリゴンをO頂点配列に変換する
+            foreach (var polygon in polygons)
+            {
+                var vertices = polygon.Select(p =>
+                    {
+                        return new VertexPosition()
+                        {
+                            Position = new Vector2(p.X, p.Y),
+                        };
+                    });
+                // 頂点配列からポリゴンラインのVBOを作成する
+                var linePolygon = new LinePolygon();
+                linePolygon.Generate(vertices.ToArray());
+
+                LinePolygons.Add(linePolygon);
+            }
         }
 
         #endregion

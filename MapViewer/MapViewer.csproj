@@ -57,10 +57,10 @@
       <HintPath>..\Assembly\Microsoft.WindowsAPICodePack.DirectX.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK">
-      <HintPath>..\packages\OpenTK_GLControl.1.0.0\lib\net20\OpenTK.dll</HintPath>
+      <HintPath>..\packages\OpenTK.1.1.1161.61462\lib\NET40\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK.GLControl">
-      <HintPath>..\packages\OpenTK_GLControl.1.0.0\lib\net20\OpenTK.GLControl.dll</HintPath>
+      <HintPath>..\packages\OpenTK.GLControl.1.1.1161.61462\lib\NET40\OpenTK.GLControl.dll</HintPath>
     </Reference>
     <Reference Include="SharpKml">
       <HintPath>..\Assembly\SharpKml.dll</HintPath>
@@ -78,10 +78,17 @@
     <Compile Include="Geometory\GLPolygon.cs" />
     <Compile Include="Geometory\IPolygon.cs" />
     <Compile Include="Geometory\Style\Style.cs" />
+    <Compile Include="GLMapViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GLMapViewForm.Designer.cs">
+      <DependentUpon>GLMapViewForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Provider\Converter\IConverter.cs" />
     <Compile Include="Provider\Converter\ScreenCoordConverter.cs" />
     <Compile Include="Provider\Converter\GLScreenCoordConverter.cs" />
     <Compile Include="Provider\GLPolygonProvider.cs" />
+    <Compile Include="Provider\IClosable.cs" />
     <Compile Include="Provider\IProvider.cs" />
     <Compile Include="Provider\KmlProvider.cs" />
     <Compile Include="Provider\Loader\KmlLoader.cs" />
@@ -113,6 +120,9 @@
     <Compile Include="View\MapControl.Designer.cs">
       <DependentUpon>MapControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GLMapViewForm.resx">
+      <DependentUpon>GLMapViewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MapViewForm.resx">
       <DependentUpon>MapViewForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +161,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenGL\OpenGL.csproj">
+      <Project>{0ae8fbc2-6912-4dc5-a412-30377203ec4f}</Project>
+      <Name>OpenGL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
