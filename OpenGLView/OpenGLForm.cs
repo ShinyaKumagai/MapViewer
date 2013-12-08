@@ -1,5 +1,7 @@
 ﻿using MapViewer.OpenGL.Camera;
 using MapViewer.OpenGL.VBO;
+using MapViewer.OpenGL.VBO.Primitive;
+using MapViewer.OpenGL.Vertex;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
@@ -17,7 +19,8 @@ namespace OpenGLView
     public partial class OpenGLForm : Form
     {
         Camera2D _camera = new Camera2D();
-        Quad2D _quad;
+        //Quad2D _quad;
+        LinePolygon _linePolygon;
 
         public OpenGLForm()
         {
@@ -43,7 +46,34 @@ namespace OpenGLView
 
             GL.ClearColor(Color.White);
 
-            _quad = new Quad2D(100f, 100f);
+            //_quad = new Quad2D(100f, 100f);
+
+            _linePolygon = new LinePolygon();
+
+            var lines = new VertexPosition[4]
+            {
+                // 左下
+                new VertexPosition()
+                {
+                    Position = new Vector2(-100, -100),
+                },
+                // 右下
+                new VertexPosition()
+                {
+                    Position = new Vector2(-100, -100),
+                },
+                // 左上
+                new VertexPosition()
+                {
+                    Position = new Vector2(-100, 100),
+                },
+                // 右上
+                new VertexPosition()
+                {
+                    Position = new Vector2(100, 100),
+                },
+            };
+            _linePolygon.Generate(lines);
         }
 
         private void glUserControl11_Resize(object sender, EventArgs e)
@@ -63,7 +93,8 @@ namespace OpenGLView
             GL.Color4(Color.Red);
             GL.PushMatrix();
             {
-                _quad.Render();
+                //_quad.Render();
+                _linePolygon.Render();
             }
             GL.PopMatrix();
 

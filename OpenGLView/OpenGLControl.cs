@@ -11,6 +11,7 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Graphics;
 using MapViewer.OpenGL.VBO;
 using MapViewer.OpenGL.Camera;
+using MapViewer.OpenGL.VBO.Primitive;
 
 namespace OpenGLView
 {
