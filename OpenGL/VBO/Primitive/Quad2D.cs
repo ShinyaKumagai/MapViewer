@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapViewer.OpenGL.VBO
+namespace MapViewer.OpenGL.VBO.Primitive
 {
     /// <summary>
-    /// 4頂点のみの2Dポリゴン
+    /// 4頂点のみの2DポリゴンのVBO
     /// </summary>
     /// <remarks>
     /// 不要になった場合は必ず<seealso cref="Delete"/>を呼び内部で保持しているVBOを削除する。
@@ -91,7 +91,7 @@ namespace MapViewer.OpenGL.VBO
         {
             Bind();
 
-            GL.DrawArrays(BeginMode.TriangleStrip, 0, 4);
+            GL.DrawArrays(BeginMode.TriangleStrip, 0, _vbo.VertexCount);
 
             Unbind();
         }
