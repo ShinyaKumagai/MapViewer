@@ -13,7 +13,7 @@ namespace MapViewer.OpenGL.Vertex
     /// <remarks>
     /// 頂点がどのような情報を使用するか定める
     /// </remarks>
-    public interface IVertexElement : IBindable
+    public interface IVertexAttribute : IBindable
     {
         #region Public properties
 
