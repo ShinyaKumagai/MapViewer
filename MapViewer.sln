@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapViewer", "MapViewer\MapViewer.csproj", "{7235B085-3CEB-4FFF-862D-4CA85A5F3AE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGLView", "OpenGLView\OpenGLView.csproj", "{F9EDE56B-BCEF-4ADC-9FC3-EEB9B7EB1C61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewTest", "OpenGLView\ViewTest.csproj", "{F9EDE56B-BCEF-4ADC-9FC3-EEB9B7EB1C61}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGL", "OpenGL\OpenGL.csproj", "{0AE8FBC2-6912-4DC5-A412-30377203EC4F}"
 EndProject
