@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGLView", "OpenGLView\Op
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGL", "OpenGL\OpenGL.csproj", "{0AE8FBC2-6912-4DC5-A412-30377203EC4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectX", "DirectX\DirectX.csproj", "{7055CDE2-38ED-4E54-A728-D33F45A829F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,12 @@ Global
 		{0AE8FBC2-6912-4DC5-A412-30377203EC4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AE8FBC2-6912-4DC5-A412-30377203EC4F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0AE8FBC2-6912-4DC5-A412-30377203EC4F}.Release|x86.ActiveCfg = Release|Any CPU
+		{7055CDE2-38ED-4E54-A728-D33F45A829F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7055CDE2-38ED-4E54-A728-D33F45A829F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7055CDE2-38ED-4E54-A728-D33F45A829F9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7055CDE2-38ED-4E54-A728-D33F45A829F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7055CDE2-38ED-4E54-A728-D33F45A829F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7055CDE2-38ED-4E54-A728-D33F45A829F9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
