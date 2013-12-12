@@ -55,7 +55,7 @@
     <Compile Include="VBO\Primitive\LinePolygon.cs" />
     <Compile Include="VBO\Primitive\Quad2D.cs" />
     <Compile Include="VBO\VertexBufferObject.cs" />
-    <Compile Include="Vertex\IVertexAttribute.cs" />
+    <Compile Include="Vertex\IVertexDeclaration.cs" />
     <Compile Include="Vertex\VertexPosition.cs" />
     <Compile Include="Vertex\VertexPositionColor.cs" />
     <Compile Include="Vertex\VertexPositionColorTexture.cs" />

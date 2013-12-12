@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace MapViewer.OpenGL.Vertex
 {
     /// <summary>
-    /// 頂点属性をバインドする時の設定
+    /// 頂点属性をバインドする時の定義情報
     /// </summary>
     /// <remarks>
     /// 頂点がどのような情報を使用するか定める
     /// </remarks>
-    public interface IVertexAttribute : IBindable
+    public interface IVertexDeclaration : IBindable
     {
         #region Public properties
 

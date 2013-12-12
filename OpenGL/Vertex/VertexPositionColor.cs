@@ -21,7 +21,7 @@ namespace MapViewer.OpenGL.Vertex
         /// <summary>
         /// 頂点情報の定義
         /// </summary>
-        public sealed class Attribute : IVertexAttribute
+        public sealed class Declaration : IVertexDeclaration
         {
             #region Private fields
 
@@ -50,7 +50,7 @@ namespace MapViewer.OpenGL.Vertex
             /// <summary>
             /// スタティックコンストラクタ
             /// </summary>
-            static Attribute()
+            static Declaration()
             {
                 _sizeInBytes = Marshal.SizeOf(default(Vector2)) + Marshal.SizeOf(default(Color4));
             }

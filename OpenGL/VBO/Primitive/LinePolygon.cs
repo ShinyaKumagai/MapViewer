@@ -41,7 +41,7 @@ namespace MapViewer.OpenGL.VBO.Primitive
 
         public void Generate(VertexPosition[] vertices)
         {
-            _vbo = new VertexBufferObject<VertexPosition>(new VertexPosition.Attribute());
+            _vbo = new VertexBufferObject<VertexPosition>(new VertexPosition.Declaration());
             _vbo.Generate(vertices);
         }
 
