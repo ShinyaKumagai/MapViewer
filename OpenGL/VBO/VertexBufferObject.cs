@@ -31,7 +31,7 @@ namespace MapViewer.OpenGL.VBO
         /// <summary>
         /// バッファに格納する頂点情報の定義
         /// </summary>
-        private IVertexAttribute _attribute;
+        private IVertexElement _element;
 
         #endregion
 
@@ -53,16 +53,16 @@ namespace MapViewer.OpenGL.VBO
         /// <summary>
         /// 新しいインスタンスを作成する
         /// </summary>
-        /// <param name="attribute">頂点情報の定義</param>
-        public VertexBufferObject(IVertexAttribute attribute)
+        /// <param name="element">頂点情報の定義</param>
+        public VertexBufferObject(IVertexElement element)
         {
-            if (attribute == null)
+            if (element == null)
             {
-                throw new ArgumentNullException("attributeが空です。");
+                throw new ArgumentNullException("elementが空です。");
             }
 
             _id = -1;
-            _attribute = attribute;
+            _element = element;
             VertexCount = 0;
         }
 
@@ -83,7 +83,7 @@ namespace MapViewer.OpenGL.VBO
             GL.BindBuffer(BufferTarget.ArrayBuffer, _id);
 
             // 頂点配列をバッファに転送する
-            int size = vertices.Length * _attribute.SizeInBytes;
+            int size = vertices.Length * _element.SizeInBytes;
             GL.BufferData(BufferTarget.ArrayBuffer, new IntPtr(size), vertices, BufferUsageHint.StaticDraw);
 
             // VBOの指定を解除する
@@ -111,14 +111,14 @@ namespace MapViewer.OpenGL.VBO
         {
             // VBOをOpenGLの操作対象に指定する
             GL.BindBuffer(BufferTarget.ArrayBuffer, _id);
-            _attribute.Bind();
+            _element.Bind();
         }
 
         public void Unbind()
         {
             // VBOをOpenGLの操作対象から解除する
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
-            _attribute.Unbind();
+            _element.Unbind();
         }
 
         #endregion
