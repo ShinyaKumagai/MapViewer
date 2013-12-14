@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapViewer.OpenGL.VBO
+namespace Graphics.OpenGL.VBO
 {
     /// <summary>
     /// VBOを削除するためのインターフェース

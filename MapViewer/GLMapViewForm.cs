@@ -1,4 +1,4 @@
-﻿using MapViewer.OpenGL.Camera;
+﻿using Graphics.OpenGL.Camera;
 using MapViewer.Provider;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapViewer.OpenGL.Vertex
+namespace Graphics.OpenGL.Vertex
 {
     /// <summary>
     /// 位置、描画色、テクスチャ座標の頂点情報

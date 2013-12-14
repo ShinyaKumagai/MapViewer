@@ -16,8 +16,9 @@ using MapViewer.Converter;
 using MapViewer.Provider.OpenGL;
 using MapViewer.Geometory.OpenGL;
 using MapViewer.Renderer.OpenGL;
-using MapViewer.OpenGL.VBO.Primitive;
-using MapViewer.OpenGL.Vertex;
+using Graphics.OpenGL.Primitive;
+using Graphics.OpenGL.Vertex;
+
 
 namespace MapViewer.View.OpenGL
 {

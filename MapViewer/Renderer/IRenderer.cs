@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace MapViewer.Renderer
 {
+    using GraphicsContext = System.Drawing.Graphics;
+
     /// <summary>
     /// ポリゴンの描画インターフェース
     /// </summary>
@@ -21,7 +23,7 @@ namespace MapViewer.Renderer
         /// </summary>
         /// <param name="graphics">グラフィックス</param>
         /// <param name="polygons">描画するポリゴン</param>
-        void Render(Graphics graphics, IList<T> polygons);
+        void Render(GraphicsContext graphics, IList<T> polygons);
 
         #endregion
     }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapViewer.OpenGL.Camera
+namespace Graphics.OpenGL.Camera
 {
     /// <summary>
     /// 2D描画用のカメラ

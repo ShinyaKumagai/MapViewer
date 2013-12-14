@@ -1,4 +1,4 @@
-﻿using MapViewer.OpenGL.Vertex;
+﻿using Graphics.OpenGL.Vertex;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapViewer.OpenGL.VBO
+namespace Graphics.OpenGL.VBO
 {
     /// <summary>
     /// 頂点バッファオブジェクトのインタフェース。

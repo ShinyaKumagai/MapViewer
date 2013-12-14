@@ -1,5 +1,4 @@
-﻿using MapViewer.OpenGL.Graphics;
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using System;
@@ -9,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapViewer.OpenGL.Vertex
+namespace Graphics.OpenGL.Vertex
 {
     /// <summary>
     /// 位置と頂点カラーを持つ頂点情報

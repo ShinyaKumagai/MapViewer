@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapViewer.OpenGL.VBO
+namespace Graphics.OpenGL.VBO
 {
     /// <summary>
     /// GLの操作対象に設定するためのインターフェース

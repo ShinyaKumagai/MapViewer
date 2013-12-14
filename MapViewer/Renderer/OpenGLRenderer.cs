@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MapViewer.Renderer.OpenGL
 {
-    #region Public methods
+    using GraphicsContext = System.Drawing.Graphics;
 
     /// <summary>
     /// OpenGLを使用する地図レンダラ
@@ -18,13 +18,11 @@ namespace MapViewer.Renderer.OpenGL
     {
         #region Public methods
 
-        public void Render(Graphics graphics, IList<GLPolygon> polygons)
+        public void Render(GraphicsContext graphics, IList<GLPolygon> polygons)
         {
             throw new NotImplementedException();
         }
 
         #endregion
     }
-
-    #endregion
 }

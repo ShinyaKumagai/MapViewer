@@ -1,7 +1,7 @@
-﻿using MapViewer.OpenGL.Camera;
-using MapViewer.OpenGL.VBO;
-using MapViewer.OpenGL.VBO.Primitive;
-using MapViewer.OpenGL.Vertex;
+﻿using Graphics.OpenGL.Camera;
+using Graphics.OpenGL.VBO;
+using Graphics.OpenGL.Primitive;
+using Graphics.OpenGL.Vertex;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;

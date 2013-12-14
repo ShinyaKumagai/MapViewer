@@ -1,4 +1,5 @@
-﻿using MapViewer.OpenGL.Vertex;
+﻿using Graphics.OpenGL.VBO;
+using Graphics.OpenGL.Vertex;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapViewer.OpenGL.VBO.Primitive
+namespace Graphics.OpenGL.Primitive
 {
     /// <summary>
     /// 4頂点のみの2DポリゴンのVBO

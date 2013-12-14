@@ -1,11 +1,11 @@
-﻿using MapViewer.OpenGL.VBO;
+﻿using Graphics.OpenGL.VBO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapViewer.OpenGL.Vertex
+namespace Graphics.OpenGL.Vertex
 {
     /// <summary>
     /// 頂点属性をバインドする時の定義情報

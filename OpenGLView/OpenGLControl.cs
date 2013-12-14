@@ -9,9 +9,9 @@ using System.Windows.Forms;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Graphics;
-using MapViewer.OpenGL.VBO;
-using MapViewer.OpenGL.Camera;
-using MapViewer.OpenGL.VBO.Primitive;
+using Graphics.OpenGL.Primitive;
+using Graphics.OpenGL.Camera;
+
 
 namespace OpenGLView
 {

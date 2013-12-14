@@ -8,14 +8,16 @@ using System.Threading.Tasks;
 
 namespace MapViewer.Renderer
 {
+    using GraphicsContext = System.Drawing.Graphics;
+
     /// <summary>
     /// DirextXを使用する地図レンダラ
     /// </summary>
-    public class DirectXRenderer : IRenderer<Polygon>
+    public class D3DRenderer : IRenderer<Polygon>
     {
         #region Public methods
 
-        public void Render(Graphics graphics, IList<Polygon> polygons)
+        public void Render(GraphicsContext graphics, IList<Polygon> polygons)
         {
             throw new NotImplementedException();
         }

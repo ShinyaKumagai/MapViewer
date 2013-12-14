@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapViewer.OpenGL.Vertex
+namespace Graphics.OpenGL.Vertex
 {
     /// <summary>
     /// 位置情報のみの頂点情報

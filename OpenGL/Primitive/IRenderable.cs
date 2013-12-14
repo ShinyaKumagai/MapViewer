@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MapViewer.OpenGL.VBO
+namespace Graphics.OpenGL.Primitive
 {
     /// <summary>
     /// VBOの描画インターフェース

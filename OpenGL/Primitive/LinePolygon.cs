@@ -1,11 +1,12 @@
-﻿using MapViewer.OpenGL.Vertex;
+﻿using Graphics.OpenGL.VBO;
+using Graphics.OpenGL.Vertex;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MapViewer.OpenGL.VBO.Primitive
+namespace Graphics.OpenGL.Primitive
 {
     /// <summary>
     /// ポリゴンの外枠ラインのVBO

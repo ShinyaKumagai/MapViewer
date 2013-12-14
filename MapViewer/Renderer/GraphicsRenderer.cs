@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace MapViewer.Renderer
 {
+    using GraphicsContext = System.Drawing.Graphics;
+
     /// <summary>
     /// <see cref="Graphics"/>を使用する地図レンダラ
     /// </summary>
@@ -15,7 +17,7 @@ namespace MapViewer.Renderer
     {
         #region Public methods
 
-        public void Render(Graphics graphics, IList<Polygon> polygons)
+        public void Render(GraphicsContext graphics, IList<Polygon> polygons)
         {
             foreach (var polygon in polygons)
             {
