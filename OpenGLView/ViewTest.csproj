@@ -57,6 +57,10 @@
     <Reference Include="OpenTK.GLControl">
       <HintPath>..\packages\OpenTK.GLControl.1.1.1161.61462\lib\NET40\OpenTK.GLControl.dll</HintPath>
     </Reference>
+    <Reference Include="SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assembly\SlimDX.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -69,6 +73,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="D3DForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="D3DForm.Designer.cs">
+      <DependentUpon>D3DForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="D3DUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="D3DUserControl.Designer.cs">
+      <DependentUpon>D3DUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="GLUserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,6 +105,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="D3DForm.resx">
+      <DependentUpon>D3DForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="D3DUserControl.resx">
+      <DependentUpon>D3DUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GLUserControl1.resx">
       <DependentUpon>GLUserControl1.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +145,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DirectX\DirectX.csproj">
+      <Project>{7055cde2-38ed-4e54-a728-d33f45a829f9}</Project>
+      <Name>DirectX</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenGL\OpenGL.csproj">
       <Project>{0ae8fbc2-6912-4dc5-a412-30377203ec4f}</Project>
       <Name>OpenGL</Name>
