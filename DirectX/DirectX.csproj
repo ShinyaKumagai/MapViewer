@@ -7,8 +7,8 @@
     <ProjectGuid>{7055CDE2-38ED-4E54-A728-D33F45A829F9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MapViewer.DirectX</RootNamespace>
-    <AssemblyName>MapViewer.DirectX</AssemblyName>
+    <RootNamespace>Graphics.DirectX</RootNamespace>
+    <AssemblyName>Graphics.DirectX</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -29,6 +29,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.WindowsAPICodePack.DirectX">
       <HintPath>..\Assembly\Microsoft.WindowsAPICodePack.DirectX.dll</HintPath>
@@ -39,6 +57,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,17 +65,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Device\DeviceContext.cs" />
-    <Compile Include="Device\DeviceSettings.cs" />
+    <Compile Include="Camera\Camera2D.cs" />
+    <Compile Include="Camera\ICamera2D.cs" />
+    <Compile Include="Device\Direct3D\DeviceContext.cs" />
+    <Compile Include="Device\Direct3D\DeviceSettings.cs" />
+    <Compile Include="Primitive\Quad2D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VertexBuffer\DynamicVertexBuffer.cs" />
     <Compile Include="VertexBuffer\IDynamicVertexBuffer.cs" />
-    <Compile Include="VertexBuffer\IRenderable.cs" />
-    <Compile Include="Vertex\VertexDeclaration.cs" />
+    <Compile Include="Primitive\IRenderable.cs" />
+    <Compile Include="Vertex\IDeclarationContainer.cs" />
     <Compile Include="Vertex\VertexPosition.cs" />
     <Compile Include="Vertex\VertexPositionColor.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Device\Direct2D\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

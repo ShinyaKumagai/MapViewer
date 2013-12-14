@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MapViewer.DirectX.Device
+namespace Graphics.DirectX.Device
 {
-    using DX9Device = SlimDX.Direct3D9.Device;
+    using D3D = SlimDX.Direct3D9;
 
     /// <summary>
     /// Provides creation and management functionality for a Direct3D9 rendering device and related objects.
@@ -33,7 +33,7 @@ namespace MapViewer.DirectX.Device
         /// <summary>
         /// 
         /// </summary>
-        public DX9Device Device
+        public D3D.Device Device
         {
             get;
             private set;
@@ -57,7 +57,8 @@ namespace MapViewer.DirectX.Device
         /// </summary>
         /// <param name="handle">The window handle to associate with the device.</param>
         /// <param name="settings">The settings used to configure the device.</param>
-        internal DeviceContext(IntPtr handle, DeviceSettings settings) {
+        public DeviceContext(IntPtr handle, DeviceSettings settings)
+        {
             if (handle == IntPtr.Zero)
             {
                 throw new ArgumentException("Value must be a valid window handle.", "handle");
@@ -71,9 +72,25 @@ namespace MapViewer.DirectX.Device
             _direct3d = new Direct3D();
 
             PresentParameters = CreatePresentParameters(handle, settings);
-            Device = new DX9Device(_direct3d, settings.AdapterOrdinal, DeviceType.Hardware, handle, 
-                settings.CreationFlags, PresentParameters);
+            Device = new D3D.Device(_direct3d, settings.AdapterOrdinal, D3D.DeviceType.Hardware,
+                handle, settings.CreationFlags, PresentParameters);
         }
+
+        #endregion
+
+        #region Public methods
+
+        #region IDisposable
+
+        public void Dispose()
+        {
+            Device.Dispose();
+            _direct3d.Dispose();
+
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
 
         #endregion
 
@@ -81,7 +98,7 @@ namespace MapViewer.DirectX.Device
 
         private PresentParameters CreatePresentParameters(IntPtr handle, DeviceSettings settings)
         {
-            return new PresentParameters()
+            return new PresentParameters
             {
                 BackBufferFormat = Format.X8R8G8B8,
                 BackBufferCount = 1,

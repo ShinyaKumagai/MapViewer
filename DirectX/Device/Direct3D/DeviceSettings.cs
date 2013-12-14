@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MapViewer.DirectX.Device
+namespace Graphics.DirectX.Device
 {
     /// <summary>
     /// Settings used to initialize a Direct3D9 device.
