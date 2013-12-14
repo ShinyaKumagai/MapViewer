@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OpenGLView
+namespace ViewTest
 {
     static class Program
     {
@@ -15,8 +15,8 @@ namespace OpenGLView
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OpenGLForm());
+
+            Application.Run(new D3DForm());
         }
     }
 }
