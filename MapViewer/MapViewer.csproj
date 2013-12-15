@@ -53,9 +53,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.WindowsAPICodePack.DirectX">
-      <HintPath>..\Assembly\Microsoft.WindowsAPICodePack.DirectX.dll</HintPath>
-    </Reference>
     <Reference Include="OpenTK">
       <HintPath>..\packages\OpenTK.1.1.1161.61462\lib\NET40\OpenTK.dll</HintPath>
     </Reference>
@@ -64,6 +61,10 @@
     </Reference>
     <Reference Include="SharpKml">
       <HintPath>..\Assembly\SharpKml.dll</HintPath>
+    </Reference>
+    <Reference Include="SlimDX, Version=4.0.13.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assembly\SlimDX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -75,6 +76,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="D3DMapViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="D3DMapViewForm.Designer.cs">
+      <DependentUpon>D3DMapViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Geometory\DXPolygon.cs" />
     <Compile Include="Geometory\GLPolygon.cs" />
     <Compile Include="Geometory\IPolygon.cs" />
     <Compile Include="Geometory\Style\Style.cs" />
@@ -84,9 +92,11 @@
     <Compile Include="GLMapViewForm.Designer.cs">
       <DependentUpon>GLMapViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Provider\Converter\DXScreenCoordConverter.cs" />
     <Compile Include="Provider\Converter\IConverter.cs" />
     <Compile Include="Provider\Converter\ScreenCoordConverter.cs" />
     <Compile Include="Provider\Converter\GLScreenCoordConverter.cs" />
+    <Compile Include="Provider\DXPolygonProvider.cs" />
     <Compile Include="Provider\GLPolygonProvider.cs" />
     <Compile Include="Provider\IClosable.cs" />
     <Compile Include="Provider\IProvider.cs" />
@@ -108,6 +118,12 @@
     <Compile Include="Renderer\D3DRenderer.cs" />
     <Compile Include="Renderer\GraphicsRenderer.cs" />
     <Compile Include="Renderer\IRenderer.cs" />
+    <Compile Include="View\D3DMapControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\D3DMapControl.Designer.cs">
+      <DependentUpon>D3DMapControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GLMapControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +136,9 @@
     <Compile Include="View\MapControl.Designer.cs">
       <DependentUpon>MapControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="D3DMapViewForm.resx">
+      <DependentUpon>D3DMapViewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GLMapViewForm.resx">
       <DependentUpon>GLMapViewForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +155,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\D3DMapControl.resx">
+      <DependentUpon>D3DMapControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\GLMapControl.resx">
       <DependentUpon>GLMapControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +185,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DirectX\DirectX.csproj">
+      <Project>{7055cde2-38ed-4e54-a728-d33f45a829f9}</Project>
+      <Name>DirectX</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenGL\OpenGL.csproj">
       <Project>{0ae8fbc2-6912-4dc5-a412-30377203ec4f}</Project>
       <Name>OpenGL</Name>

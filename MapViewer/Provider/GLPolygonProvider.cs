@@ -10,14 +10,14 @@ using System.Text;
 namespace MapViewer.Provider.OpenGL
 {
     /// <summary>
-    /// 
+    /// OpenGL用の2Dポリゴンを作成する
     /// </summary>
     public class GLPolygonProvider : IProvider<GLPolygon>
     {
         #region Public properties
 
         /// <summary>
-        /// スクリーン座標のポリゴンプロバイダ
+        /// フォームスクリーン座標のポリゴンプロバイダ
         /// </summary>
         public IProvider<Polygon> PolygonProvider
         {
@@ -40,7 +40,7 @@ namespace MapViewer.Provider.OpenGL
         /// <summary>
         /// 新しいインスタンスを作成する
         /// </summary>
-        /// <param name="polygonProvider">スクリーン座標のポリゴンプロバイダ</param>
+        /// <param name="polygonProvider">フォームスクリーン座標のポリゴンプロバイダ</param>
         public GLPolygonProvider(IProvider<Polygon> polygonProvider)
         {
             PolygonProvider = polygonProvider;
@@ -58,7 +58,7 @@ namespace MapViewer.Provider.OpenGL
             }
 
             var srcPolygons = PolygonProvider.Provide(displaySize);
-            // 変換元のポリゴンが提供できない場合
+            // 変換元のポリゴンが作成できなかった場合
             if (srcPolygons == null)
             {
                 return null;
