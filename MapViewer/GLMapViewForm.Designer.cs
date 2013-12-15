@@ -32,9 +32,11 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.ファイルToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.開くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.地図ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.他の地図を開くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.direct3Dの地図を開くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.button = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +46,7 @@
             this.glMapControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.glMapControl.Location = new System.Drawing.Point(0, 24);
             this.glMapControl.Name = "glMapControl";
-            this.glMapControl.Size = new System.Drawing.Size(984, 937);
+            this.glMapControl.Size = new System.Drawing.Size(984, 841);
             this.glMapControl.TabIndex = 0;
             this.glMapControl.VSync = false;
             this.glMapControl.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaintMap);
@@ -77,14 +79,11 @@
             this.開くToolStripMenuItem.Text = "開く";
             this.開くToolStripMenuItem.Click += new System.EventHandler(this.OnClickFileOpen);
             // 
-            // openFileDialog
-            // 
-            this.openFileDialog.FileName = "openFileDialog";
-            // 
             // 地図ToolStripMenuItem
             // 
             this.地図ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.他の地図を開くToolStripMenuItem});
+            this.他の地図を開くToolStripMenuItem,
+            this.direct3Dの地図を開くToolStripMenuItem});
             this.地図ToolStripMenuItem.Name = "地図ToolStripMenuItem";
             this.地図ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.地図ToolStripMenuItem.Text = "地図";
@@ -92,15 +91,37 @@
             // 他の地図を開くToolStripMenuItem
             // 
             this.他の地図を開くToolStripMenuItem.Name = "他の地図を開くToolStripMenuItem";
-            this.他の地図を開くToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.他の地図を開くToolStripMenuItem.Text = "他の地図を開く";
+            this.他の地図を開くToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.他の地図を開くToolStripMenuItem.Text = "標準の地図を開く";
             this.他の地図を開くToolStripMenuItem.Click += new System.EventHandler(this.OnOpenOtherMap);
+            // 
+            // direct3Dの地図を開くToolStripMenuItem
+            // 
+            this.direct3Dの地図を開くToolStripMenuItem.Name = "direct3Dの地図を開くToolStripMenuItem";
+            this.direct3Dの地図を開くToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.direct3Dの地図を開くToolStripMenuItem.Text = "Direct3Dの地図を開く";
+            this.direct3Dの地図を開くToolStripMenuItem.Click += new System.EventHandler(this.OnOpenDirect3DMap);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            // 
+            // button
+            // 
+            this.button.Location = new System.Drawing.Point(897, 27);
+            this.button.Name = "button";
+            this.button.Size = new System.Drawing.Size(75, 23);
+            this.button.TabIndex = 2;
+            this.button.Text = "更新";
+            this.button.UseVisualStyleBackColor = true;
+            this.button.Click += new System.EventHandler(this.OnClickReflesh);
             // 
             // GLMapViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 961);
+            this.ClientSize = new System.Drawing.Size(984, 865);
+            this.Controls.Add(this.button);
             this.Controls.Add(this.glMapControl);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
@@ -124,5 +145,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ToolStripMenuItem 地図ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 他の地図を開くToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem direct3Dの地図を開くToolStripMenuItem;
+        private System.Windows.Forms.Button button;
     }
 }

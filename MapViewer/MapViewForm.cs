@@ -25,11 +25,6 @@ namespace MapViewer
         #region Private fields
 
         /// <summary>
-        /// 描画するポリゴン
-        /// </summary>
-        private IList<Polygon> _drawPolygons;
-
-        /// <summary>
         /// <see cref="Graphics"/>を使用して地図を描画するコントロール
         /// </summary>
         private MapControl _mapControl;
@@ -44,6 +39,8 @@ namespace MapViewer
         }
 
         #endregion
+
+        #region Private methods
 
         /// <summary>
         /// メニューの「ファイルを開く」をクリックしたときに呼ばれる処理
@@ -81,8 +78,6 @@ namespace MapViewer
         /// <param name="e"></param>
         private void OnLoad(object sender, EventArgs e)
         {
-            _drawPolygons = new List<Geometory.Polygon>();
-
             // クライアント領域のサイズを設定する
             SizeFromClientSize(new Size(1000, 1000));
 
@@ -97,7 +92,15 @@ namespace MapViewer
             SetStyle(ControlStyles.ResizeRedraw, true);
         }
 
-        #region Private methods
+        /// <summary>
+        /// 地図の更新ボタンが押下されたときに呼ばれる
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnCLickReflesh(object sender, EventArgs e)
+        {
+            _mapControl.Invalidate();
+        }
 
         #endregion
     }

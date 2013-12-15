@@ -1,23 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using OpenTK;
-using MapViewer.Provider;
-using System.Threading.Tasks;
-using MapViewer.Renderer;
-using MapViewer.Geometory;
-using OpenTK.Graphics.OpenGL;
-using MapViewer.Converter;
-using MapViewer.Provider.OpenGL;
-using MapViewer.Geometory.OpenGL;
-using MapViewer.Renderer.OpenGL;
-using Graphics.OpenGL.Primitive;
+﻿using Graphics.OpenGL.Primitive;
 using Graphics.OpenGL.Vertex;
+using MapViewer.Geometory;
+using MapViewer.Geometory.OpenGL;
+using MapViewer.Provider;
+using MapViewer.Provider.OpenGL;
+using OpenTK;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 
 namespace MapViewer.View.OpenGL
@@ -55,6 +46,8 @@ namespace MapViewer.View.OpenGL
 
         #region Public methods
 
+        #region IOpenable
+
         public void Open(IProvider<Polygon> provider)
         {
             // ロード中はカーソルを待機状態にする
@@ -86,6 +79,8 @@ namespace MapViewer.View.OpenGL
                 polyline.Delete();
             }
         }
+
+        #endregion
 
         #endregion
 

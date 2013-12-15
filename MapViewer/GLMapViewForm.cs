@@ -147,6 +147,26 @@ namespace MapViewer
             new MapViewForm().Show();
         }
 
+        /// <summary>
+        /// Direct3D版の地図フォームを表示する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnOpenDirect3DMap(object sender, EventArgs e)
+        {
+            new D3DMapViewForm().Show();
+        }
+
+        /// <summary>
+        /// 地図の更新ボタンが押下されたときに呼ばれる
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnClickReflesh(object sender, EventArgs e)
+        {
+            glMapControl.Invalidate();
+        }
+
         #endregion
     }
 }
