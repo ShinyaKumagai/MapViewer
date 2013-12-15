@@ -69,6 +69,8 @@
     <Compile Include="Camera\ICamera2D.cs" />
     <Compile Include="Device\Direct3D\DeviceContext.cs" />
     <Compile Include="Device\Direct3D\DeviceSettings.cs" />
+    <Compile Include="Primitive\IPrimitive.cs" />
+    <Compile Include="Primitive\LinePolygon.cs" />
     <Compile Include="Primitive\Quad2D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VertexBuffer\DynamicVertexBuffer.cs" />
