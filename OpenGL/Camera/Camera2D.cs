@@ -113,9 +113,9 @@ namespace Graphics.OpenGL.Camera
             var halfSize = new SizeF(ClipSize.Width * .5f, ClipSize.Height * .5f);
             var clip = new {
                            Left   = ClipCenter.X - halfSize.Width,
-                           Top    = ClipCenter.Y - halfSize.Height,
+                           Top    = ClipCenter.Y + halfSize.Height,
                            Right  = ClipCenter.X + halfSize.Width,
-                           Bottom = ClipCenter.Y + halfSize.Height
+                           Bottom = ClipCenter.Y - halfSize.Height
                        };
             // 現在の行列にクリップ面から計算する正射影行列を適用する
             GL.Ortho(clip.Left, clip.Right, clip.Bottom, clip.Top, -1d, 1d);
