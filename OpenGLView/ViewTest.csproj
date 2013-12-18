@@ -85,6 +85,18 @@
     <Compile Include="D3DUserControl.Designer.cs">
       <DependentUpon>D3DUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="GLPolygonControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GLPolygonControl.Designer.cs">
+      <DependentUpon>GLPolygonControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GLPolygonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GLPolygonForm.Designer.cs">
+      <DependentUpon>GLPolygonForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GLUserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,6 +122,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="D3DUserControl.resx">
       <DependentUpon>D3DUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GLPolygonControl.resx">
+      <DependentUpon>GLPolygonControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GLPolygonForm.resx">
+      <DependentUpon>GLPolygonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GLUserControl1.resx">
       <DependentUpon>GLUserControl1.cs</DependentUpon>

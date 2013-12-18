@@ -16,7 +16,7 @@ namespace ViewTest
         {
             Application.EnableVisualStyles();
 
-            Application.Run(new D3DForm());
+            Application.Run(new GLPolygonForm());
         }
     }
 }
