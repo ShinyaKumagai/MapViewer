@@ -16,7 +16,7 @@ namespace Graphics.OpenGL.Primitive
     /// <remarks>
     /// 不要になった場合は必ず<seealso cref="Delete"/>を呼び内部で保持しているVBOを削除する。
     /// </remarks>
-    public class Quad2D : IBindable, IDeletable, IRenderable
+    public class Quad2D : IBindable, IDisposable, IRenderable
     {
         #region Private fields
 
@@ -63,6 +63,18 @@ namespace Graphics.OpenGL.Primitive
 
         #region Public methods
 
+        #region IDeletable
+
+        public void Dispose()
+        {
+            _vbo.Dispose();
+
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
+
+
         #region IBindable
 
         public void Bind()
@@ -73,15 +85,6 @@ namespace Graphics.OpenGL.Primitive
         public void Unbind()
         {
             _vbo.Unbind();
-        }
-
-        #endregion
-
-        #region IDeletable
-
-        public void Delete()
-        {
-            _vbo.Delete();
         }
 
         #endregion

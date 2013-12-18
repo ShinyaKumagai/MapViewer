@@ -24,6 +24,17 @@ namespace Graphics.OpenGL.Primitive
 
         #region Public methods
 
+        #region IDisposable
+
+        public void Dispose()
+        {
+            _vbo.Dispose();
+
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
+
         #region IBindable
 
         public void Bind()
@@ -44,11 +55,6 @@ namespace Graphics.OpenGL.Primitive
         {
             _vbo = new VertexBufferObject<VertexPosition>(new VertexPosition.Declaration());
             _vbo.Generate(vertices);
-        }
-
-        public void Delete()
-        {
-            _vbo.Delete();
         }
 
         #endregion

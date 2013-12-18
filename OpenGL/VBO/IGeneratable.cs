@@ -10,7 +10,7 @@ namespace Graphics.OpenGL.VBO
     /// VBOを作成するためのインターフェース
     /// </summary>
     /// <typeparam name="T">頂点の型</typeparam>
-    public interface IGeneratable<T> : IDeletable where T : struct
+    public interface IGeneratable<T> : IDisposable where T : struct
     {
         #region Public methods
 

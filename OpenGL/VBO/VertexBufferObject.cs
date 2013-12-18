@@ -70,6 +70,17 @@ namespace Graphics.OpenGL.VBO
 
         #region Public methods
 
+        #region IDisposable
+
+        public void Dispose()
+        {
+            Delete();
+
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
+
         #region IGeneratable
 
         public void Generate(T[] vertices)
@@ -93,16 +104,6 @@ namespace Graphics.OpenGL.VBO
             VertexCount = vertices.Length;
         }
 
-        public void Delete()
-        {
-            if (_id == -1)
-            {
-                return;
-            }
-            // VBOを削除する
-            GL.DeleteBuffers(1, ref _id);
-        }
-
         #endregion
 
         #region IBindable
@@ -122,6 +123,19 @@ namespace Graphics.OpenGL.VBO
         }
 
         #endregion
+
+        #endregion
+
+        #region Private methods
+
+        private void Delete()
+        {
+            if (_id != -1)
+            {
+                // VBOを削除する
+                GL.DeleteBuffers(1, ref _id);
+            }
+        }
 
         #endregion
     }

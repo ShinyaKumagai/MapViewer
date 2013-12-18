@@ -76,7 +76,7 @@ namespace MapViewer.View.OpenGL
 
             foreach (var polyline in LinePolygons)
             {
-                polyline.Delete();
+                polyline.Dispose();
             }
         }
 

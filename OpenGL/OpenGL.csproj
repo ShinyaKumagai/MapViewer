@@ -65,7 +65,6 @@
     <Compile Include="Camera\Camera2D.cs" />
     <Compile Include="Camera\ICamera2D.cs" />
     <Compile Include="VBO\IBindable.cs" />
-    <Compile Include="VBO\IDeletable.cs" />
     <Compile Include="Primitive\IRenderable.cs" />
     <Compile Include="VBO\IGeneratable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
