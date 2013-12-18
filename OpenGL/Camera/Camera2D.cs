@@ -2,6 +2,7 @@
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,13 +27,13 @@ namespace Graphics.OpenGL.Camera
 
         #region ICamera2D
 
-        public Vector2 ClipSize
+        public SizeF ClipSize
         {
             get;
             set;
         }
 
-        public Vector2 ClipCenter
+        public PointF ClipCenter
         {
             get;
             private set;
@@ -61,7 +62,7 @@ namespace Graphics.OpenGL.Camera
         /// 新しいインスタンスを作成する
         /// </summary>
         public Camera2D() :
-            this(new Vector2(1, 1))
+            this(new SizeF(1f, 1f))
         {
         }
 
@@ -70,8 +71,18 @@ namespace Graphics.OpenGL.Camera
         /// </summary>
         /// <param name="width">クリップ面の幅</param>
         /// <param name="height">クリップ面の高さ</param>
-        public Camera2D(int width, int height) :
-            this(new Vector2(width, height))
+        public Camera2D(float width, float height) :
+            this(new SizeF(width, height))
+        {
+        }
+
+
+        /// <summary>
+        /// 新しいインスタンスを作成する
+        /// </summary>
+        /// <param name="clipSize">クリップ面のサイズ</param>
+        public Camera2D(Size clipSize) :
+            this(new SizeF(clipSize.Width, clipSize.Height))
         {
         }
 
@@ -79,10 +90,10 @@ namespace Graphics.OpenGL.Camera
         /// 新しいインスタンスを作成する
         /// </summary>
         /// <param name="clipSize">クリップ面のサイズ</param>
-        public Camera2D(Vector2 clipSize)
+        public Camera2D(SizeF clipSize)
         {
             ClipSize = clipSize;
-            ClipCenter = Vector2.Zero;
+            ClipCenter = PointF.Empty;
             Zoom = 1f;
         }
 
@@ -99,12 +110,12 @@ namespace Graphics.OpenGL.Camera
             GL.LoadIdentity();
 
             // クリップ面を計算する
-            var halfSize = ClipSize / 2;
+            var halfSize = new SizeF(ClipSize.Width * .5f, ClipSize.Height * .5f);
             var clip = new {
-                           Left   = ClipCenter.X - halfSize.X,
-                           Top    = ClipCenter.Y - halfSize.Y,
-                           Right  = ClipCenter.X + halfSize.X,
-                           Bottom = ClipCenter.Y + halfSize.Y
+                           Left   = ClipCenter.X - halfSize.Width,
+                           Top    = ClipCenter.Y - halfSize.Height,
+                           Right  = ClipCenter.X + halfSize.Width,
+                           Bottom = ClipCenter.Y + halfSize.Height
                        };
             // 現在の行列にクリップ面から計算する正射影行列を適用する
             GL.Ortho(clip.Left, clip.Right, clip.Bottom, clip.Top, -1d, 1d);

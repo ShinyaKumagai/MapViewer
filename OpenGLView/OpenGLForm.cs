@@ -78,7 +78,7 @@ namespace OpenGLView
 
         private void glUserControl11_Resize(object sender, EventArgs e)
         {
-            _camera.ClipSize = new Vector2(ClientSize.Width, ClientSize.Height);
+            _camera.ClipSize = ClientSize;
             GL.Viewport(glUserControl11.ClientRectangle);
         }
 

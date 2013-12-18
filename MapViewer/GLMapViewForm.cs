@@ -61,7 +61,7 @@ namespace MapViewer
             // コントロールのサイズが変わった場合はクリップ面に反映させる
             // クリップ面はコントロールの描画領域と同じサイズ
             var mapControlSize = glMapControl.ClientSize;
-            _camera.ClipSize = new Vector2(mapControlSize.Width, mapControlSize.Height);
+            _camera.ClipSize = mapControlSize;
             GL.Viewport(glMapControl.ClientRectangle);
         }
 

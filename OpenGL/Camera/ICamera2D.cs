@@ -1,6 +1,7 @@
 ﻿using OpenTK;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace Graphics.OpenGL.Camera
         /// <remarks>
         /// カメラが移す範囲の幅および高さになる。
         /// </remarks>
-        Vector2 ClipSize
+        SizeF ClipSize
         {
             get;
             set;
@@ -32,7 +33,7 @@ namespace Graphics.OpenGL.Camera
         /// <summary>
         /// クリップ面の中心座標
         /// </summary>
-        Vector2 ClipCenter
+        PointF ClipCenter
         {
             get;
         }

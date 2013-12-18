@@ -25,12 +25,12 @@ namespace OpenGLView
         {
             InitializeComponent();
 
-            _camera = new Camera2D(new Vector2(ClientSize.Width, ClientSize.Height));
+            _camera = new Camera2D(ClientSize);
         }
 
         public void Unload()
         {
-            _quad2D.Delete();
+            _quad2D.Dispose();
         }
 
         private void OpenGLControl_Load(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace OpenGLView
         private void OpenGLControl_Resize(object sender, EventArgs e)
         {
             GL.Viewport(ClientRectangle);
-            _camera.ClipSize = new Vector2(ClientSize.Width, ClientSize.Height);
+            _camera.ClipSize = ClientSize;
 
             //GL.MatrixMode(MatrixMode.Projection);
             //Matrix4 projection = Matrix4.CreatePerspectiveFieldOfView((float)Math.PI / 4,
