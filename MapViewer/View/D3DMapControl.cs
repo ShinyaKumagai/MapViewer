@@ -1,21 +1,21 @@
-﻿using System;
+﻿using Graphics.DirectX.Camera;
+using Graphics.DirectX.Device;
+using Graphics.DirectX.Primitive;
+using Graphics.DirectX.Vertex;
+using MapViewer.Geometory;
+using MapViewer.Geometory.DirectX;
+using MapViewer.Provider;
+using SlimDX;
+using SlimDX.Direct3D9;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using MapViewer.Provider;
-using Graphics.DirectX.Primitive;
-using MapViewer.Geometory;
-using MapViewer.Geometory.DirectX;
-using Graphics.DirectX.Vertex;
-using Graphics.DirectX.Device;
-using Graphics.DirectX.Camera;
-using SlimDX.Direct3D9;
-using SlimDX;
-using System.Diagnostics;
 
 namespace MapViewer.View
 {
